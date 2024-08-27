@@ -1,0 +1,24 @@
+﻿@model WebRed.Models.InicioModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Inicio de Sesión";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Sign" method="post">
+    <div class="form-group">
+        <label asp-for="Correo"></label>
+        <input asp-for="Correo" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Contrasena"></label>
+        <input asp-for="Contrasena" type="password" class="form-control" />
+        <span asp-validation-for="Contrasena" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+    </div>
+</form>
