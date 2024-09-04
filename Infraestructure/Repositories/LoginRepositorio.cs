@@ -83,6 +83,36 @@ namespace Infraestructure.Repositories
             }
         }
 
+        public async Task<bool> ReestablecerPassword(string username , string newPassword)
+        {
+
+            try
+            {
+                var usuario = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+
+                if (usuario != null)
+                {
+
+                    usuario.Password = await HashearContraseñaAsync(newPassword);
+                    _context.Users.Update(usuario);
+                    await _context.SaveChangesAsync();
+                    return true;
+
+                }
+                else
+                {
+
+                    return false;
+                }
+            }
+            catch (Exception ex) { 
+                
+                Console.WriteLine($"error al restablecer la contrasena {ex.Message}");
+                return false;
+            }
+
+        }
+
         
     }
 }

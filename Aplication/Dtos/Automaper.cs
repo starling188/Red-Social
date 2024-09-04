@@ -2,7 +2,8 @@
 using AutoMapper;
 using Domain.Entities;
 using Domain.Models.User;
-using WebRed.Models;
+
+using Domain.Models;
 
 namespace Aplication.Dtos
 {

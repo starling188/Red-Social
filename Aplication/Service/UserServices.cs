@@ -42,7 +42,8 @@ namespace Aplication.Service
                 throw new ArgumentException("El correo no puede ser vacío.");
             }
 
-
+            var existuserName = await _UserRepo.GetByUsernameAsync(model.UserName);
+            if (existuserName != null) { throw new ArgumentException("El nombre de usuario ya existe. Por favor elige otro nombre."); }
 
 
             var entity = _map.Map<User>(model);

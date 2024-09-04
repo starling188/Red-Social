@@ -1,12 +1,14 @@
 ﻿
-using Aplication.Service;
+
 using Domain.Interface.Service;
+using Domain.Models;
+using Domain.Models.Login;
 using Domain.Models.User;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using WebRed.Models;
+
 
 namespace WebUI.Controllers
 {
@@ -26,11 +28,49 @@ namespace WebUI.Controllers
             return View();
         }
 
-      
 
-        public IActionResult Loguear() { return View(); }
+        public IActionResult Loguear() {
+
+          
+            return View();
+        
+        }
+
+        
+        public IActionResult RestablecerContraseña()
+        {
+            return View();
+        }
 
 
+
+        //metodos 
+
+        [HttpPost]
+        public async Task<IActionResult> RestablecerContraseña(RestablecerPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Asegúrate de validar la nueva contraseña antes de continuar
+                if (string.IsNullOrWhiteSpace(model.NuevaContraseña))
+                {
+                    ModelState.AddModelError(string.Empty, "La nueva contraseña no puede estar vacía.");
+                    return View(model);
+                }
+
+                var result = await _log.RestablecerPassword(model.UserName, model.NuevaContraseña);
+
+                if (result)
+                {
+                    ViewData["Mensaje"] = "Contraseña reestablecida con éxito";
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "El nombre de usuario no fue encontrado");
+                }
+            }
+            return View(model);
+        }
 
         [HttpPost]
         public async Task<IActionResult> Register(SaveUserModel model)
@@ -54,7 +94,7 @@ namespace WebUI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Sign(InicioModel model)
+        public async Task<IActionResult> Loguear(InicioModel model)
         {
             if (ModelState.IsValid)
             {
@@ -76,16 +116,23 @@ namespace WebUI.Controllers
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
+
+                    TempData["SuccessMessage"] = "Inicio de sesión exitoso. ¡Bienvenido!";
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Correo electrónico o contraseña incorrectos.");
+                    TempData["ErrorMessage"] = "Correo electrónico o contraseña incorrectos.";
+
                 }
+            }
+            else
+            {
+                TempData["WarningMessage"] = "Por favor, corrija los errores en el formulario.";
+            }
 
-               
-
-            } return View(model);
+            return View(model);
         }
     }
 }

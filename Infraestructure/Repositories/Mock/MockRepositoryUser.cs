@@ -53,6 +53,11 @@ namespace Infraestructure.Repositories.Mock
             throw new NotImplementedException();
         }
 
+        public Task<User> GetByUsernameAsync(string username)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task Save()
         {
             throw new NotImplementedException();

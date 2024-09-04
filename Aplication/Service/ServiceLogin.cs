@@ -3,7 +3,8 @@ using AutoMapper;
 using Domain.Entities;
 using Domain.Interface.Repositories;
 using Domain.Interface.Service;
-using WebRed.Models;
+using Domain.Models;
+using Domain.Models.Login;
 
 namespace Aplication.Service
 {
@@ -17,6 +18,11 @@ namespace Aplication.Service
             _map = map;
             _log = log;
             
+        }
+
+        public async Task<bool> RestablecerPassword(string username,  string newpassword)
+        {
+            return await _log.ReestablecerPassword(username, newpassword);
         }
 
         public async Task<User> InicioSession(InicioModel model)

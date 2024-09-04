@@ -103,5 +103,10 @@ namespace Infraestructure.Repositories
                 .AsNoTracking() // No rastrea el cambio para consultas de solo lectura
                 .FirstOrDefaultAsync(predicate);
         }
+
+        public async Task<User> GetByUsernameAsync(string username)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        }
     }
 }

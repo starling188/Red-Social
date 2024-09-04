@@ -39,6 +39,9 @@ namespace Infraestructure.Context
                 entity.Property(e => e.Telefono).HasMaxLength(15);
                 entity.Property(e => e.Correo).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.UserName).IsRequired().HasMaxLength(50);
+
+                entity.HasIndex(e => e.UserName).IsUnique();
+
                 entity.Property(e => e.Password).IsRequired().HasMaxLength(255);
                 entity.Property(e => e.EstadoActivacion);
             });

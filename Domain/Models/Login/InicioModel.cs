@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebRed.Models
+namespace Domain.Models
 {
     public class InicioModel
     {
