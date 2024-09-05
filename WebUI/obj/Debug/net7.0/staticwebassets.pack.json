@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\Login.css"
     },
     {
+      "Id": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\css\\Register.css",
+      "PackagePath": "staticwebassets\\css\\Register.css"
+    },
+    {
       "Id": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

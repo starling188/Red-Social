@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7blEKlC0eLnRzkfonkTBrCvWkmh1+HIkplJNkWVUTjw=",
+  "Hash": "WGUn0bUrVY1Lym8v4rSeRB3Bb4jqvcA/fBAczFGBr+o=",
   "Source": "WebUI",
   "BasePath": "_content/WebUI",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Login.css"
+    },
+    {
+      "Identity": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\css\\Register.css",
+      "SourceId": "WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\",
+      "BasePath": "_content/WebUI",
+      "RelativePath": "css/Register.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Register.css"
     },
     {
       "Identity": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\css\\site.css",

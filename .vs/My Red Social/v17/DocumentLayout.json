@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\views\\login\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\views\\login\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\views\\login\\loguear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\views\\login\\loguear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{6AB89AF2-FFF4-467D-9C43-814454616F40}|Domain\\Domain.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\domain\\models\\user\\saveusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AB89AF2-FFF4-467D-9C43-814454616F40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\user\\saveusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\wwwroot\\css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\wwwroot\\css\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\views\\login\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\views\\login\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,10 +55,6 @@
       "RelativeMoniker": "D:0:0:{6AB89AF2-FFF4-467D-9C43-814454616F40}|Domain\\Domain.csproj|solutionrelative:domain\\interface\\service\\iservicelogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AB89AF2-FFF4-467D-9C43-814454616F40}|Domain\\Domain.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\domain\\models\\login\\restablecerpasswordmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AB89AF2-FFF4-467D-9C43-814454616F40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\login\\restablecerpasswordmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\wwwroot\\lib\\jquery\\dist\\jquery.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\wwwroot\\lib\\jquery\\dist\\jquery.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
@@ -69,10 +69,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\views\\login\\restablecercontrase\u00F1a.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|solutionrelative:webui\\views\\login\\restablecercontrase\u00F1a.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8DDA0FF-C216-43BF-82BC-475A9A72886B}|WebUI\\WebUI.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\webui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -109,10 +105,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{42BD592E-7D33-495F-9272-29BEFA3CE778}|Infraestructure\\Infraestructure.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\infraestructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42BD592E-7D33-495F-9272-29BEFA3CE778}|Infraestructure\\Infraestructure.csproj|solutionrelative:infraestructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AB89AF2-FFF4-467D-9C43-814454616F40}|Domain\\Domain.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\domain\\models\\user\\saveusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AB89AF2-FFF4-467D-9C43-814454616F40}|Domain\\Domain.csproj|solutionrelative:domain\\models\\user\\saveusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6AB89AF2-FFF4-467D-9C43-814454616F40}|Domain\\Domain.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -193,10 +185,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{42BD592E-7D33-495F-9272-29BEFA3CE778}|Infraestructure\\Infraestructure.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\infraestructure\\migrations\\20240827070121_nullactivartoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42BD592E-7D33-495F-9272-29BEFA3CE778}|Infraestructure\\Infraestructure.csproj|solutionrelative:infraestructure\\migrations\\20240827070121_nullactivartoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42BD592E-7D33-495F-9272-29BEFA3CE778}|Infraestructure\\Infraestructure.csproj|c:\\users\\gonza\\desktop\\onion\\red social\\proyecto red social\\my red social\\infraestructure\\migrations\\20240830164242_adduniqueconstrainttousername.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42BD592E-7D33-495F-9272-29BEFA3CE778}|Infraestructure\\Infraestructure.csproj|solutionrelative:infraestructure\\migrations\\20240830164242_adduniqueconstrainttousername.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -206,21 +194,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 14,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "WebUI\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "WebUI\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-04T03:46:10.885Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
@@ -259,33 +234,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "Register.css",
+              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\css\\Register.css",
+              "RelativeDocumentMoniker": "WebUI\\wwwroot\\css\\Register.css",
+              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\css\\Register.css",
+              "RelativeToolTip": "WebUI\\wwwroot\\css\\Register.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-05T02:26:27.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Loguear.cshtml",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Login\\Loguear.cshtml",
               "RelativeDocumentMoniker": "WebUI\\Views\\Login\\Loguear.cshtml",
               "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Login\\Loguear.cshtml",
               "RelativeToolTip": "WebUI\\Views\\Login\\Loguear.cshtml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABkAAAAHAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAE8AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-09-03T18:01:56.425Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "WebUI\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "WebUI\\Controllers\\LoginController.cs",
-              "ViewState": "AQIAAGUAAAAAAAAAAAAUwIMAAABgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-25T19:13:57.986Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ServiceLogin.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\Service\\ServiceLogin.cs",
               "RelativeDocumentMoniker": "Aplication\\Service\\ServiceLogin.cs",
@@ -293,12 +268,11 @@
               "RelativeToolTip": "Aplication\\Service\\ServiceLogin.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAmwB8AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T17:08:48.61Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T17:08:48.61Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "LoginRepositorio.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Repositories\\LoginRepositorio.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Repositories\\LoginRepositorio.cs",
@@ -306,12 +280,11 @@
               "RelativeToolTip": "Infraestructure\\Repositories\\LoginRepositorio.cs",
               "ViewState": "AQIAACUAAAAAAAAAAAAAABYAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-25T20:48:17.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-25T20:48:17.224Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "InicioModel.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Models\\Login\\InicioModel.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Login\\InicioModel.cs",
@@ -319,38 +292,24 @@
               "RelativeToolTip": "Domain\\Models\\Login\\InicioModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAIAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T17:32:05.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T17:32:05.796Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Login\\Register.cshtml",
               "RelativeDocumentMoniker": "WebUI\\Views\\Login\\Register.cshtml",
               "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Login\\Register.cshtml",
               "RelativeToolTip": "WebUI\\Views\\Login\\Register.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAAcAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAFMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-25T19:15:25.65Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WebUI\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WebUI\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAgAAABRAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-30T19:56:32.689Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "site.js",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "WebUI\\wwwroot\\js\\site.js",
@@ -363,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "WebUI\\wwwroot\\css\\site.css",
@@ -376,20 +335,57 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Login.css",
-              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\css\\Login.css",
-              "RelativeDocumentMoniker": "WebUI\\wwwroot\\css\\Login.css",
-              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\css\\Login.css",
-              "RelativeToolTip": "WebUI\\wwwroot\\css\\Login.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-04T02:39:19.351Z",
+              "DocumentIndex": 2,
+              "Title": "SaveUserModel.cs",
+              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Models\\User\\SaveUserModel.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\User\\SaveUserModel.cs",
+              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Models\\User\\SaveUserModel.cs",
+              "RelativeToolTip": "Domain\\Models\\User\\SaveUserModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T23:44:36.638Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 8,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "WebUI\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "WebUI\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAGUAAAAAAAAAAAAUwIMAAABgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-25T19:13:57.986Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebUI\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "WebUI\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T03:46:10.885Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WebUI\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "WebUI\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB4AAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-30T19:56:32.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "IServiceLogin.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Interface\\Service\\IServiceLogin.cs",
               "RelativeDocumentMoniker": "Domain\\Interface\\Service\\IServiceLogin.cs",
@@ -397,21 +393,7 @@
               "RelativeToolTip": "Domain\\Interface\\Service\\IServiceLogin.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAkAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T17:28:24.544Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RestablecerPasswordModel.cs",
-              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Models\\Login\\RestablecerPasswordModel.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Login\\RestablecerPasswordModel.cs",
-              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Models\\Login\\RestablecerPasswordModel.cs",
-              "RelativeToolTip": "Domain\\Models\\Login\\RestablecerPasswordModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T17:12:20.132Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T17:28:24.544Z"
             },
             {
               "$type": "Document",
@@ -439,18 +421,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "RestablecerContrase\u00F1a.cshtml",
-              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Login\\RestablecerContrase\u00F1a.cshtml",
-              "RelativeDocumentMoniker": "WebUI\\Views\\Login\\RestablecerContrase\u00F1a.cshtml",
-              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Login\\RestablecerContrase\u00F1a.cshtml",
-              "RelativeToolTip": "WebUI\\Views\\Login\\RestablecerContrase\u00F1a.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-30T17:33:49.702Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 14,
               "Title": "bootstrap.min.css",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
@@ -475,7 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "ActivacionFallida.cshtml",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Activacion\\ActivacionFallida.cshtml",
               "RelativeDocumentMoniker": "WebUI\\Views\\Activacion\\ActivacionFallida.cshtml",
@@ -487,7 +457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "ActivacionExitoso.cshtml",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Activacion\\ActivacionExitoso.cshtml",
               "RelativeDocumentMoniker": "WebUI\\Views\\Activacion\\ActivacionExitoso.cshtml",
@@ -499,7 +469,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Program.cs",
               "RelativeDocumentMoniker": "WebUI\\Program.cs",
@@ -511,7 +481,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "Automaper.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\Dtos\\Automaper.cs",
               "RelativeDocumentMoniker": "Aplication\\Dtos\\Automaper.cs",
@@ -523,7 +493,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 21,
               "Title": "IRepositoryLogin.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Interface\\Repositories\\IRepositoryLogin.cs",
               "RelativeDocumentMoniker": "Domain\\Interface\\Repositories\\IRepositoryLogin.cs",
@@ -535,7 +505,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 22,
               "Title": "Error.cshtml",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Views\\Activacion\\Error.cshtml",
               "RelativeDocumentMoniker": "WebUI\\Views\\Activacion\\Error.cshtml",
@@ -547,7 +517,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 23,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "WebUI\\Models\\ErrorViewModel.cs",
@@ -559,7 +529,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "UserServices.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\Service\\UserServices.cs",
               "RelativeDocumentMoniker": "Aplication\\Service\\UserServices.cs",
@@ -571,7 +541,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 25,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Repositories\\UserRepository.cs",
@@ -583,7 +553,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 26,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Entities\\User.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\User.cs",
@@ -595,19 +565,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "SaveUserModel.cs",
-              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Models\\User\\SaveUserModel.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\User\\SaveUserModel.cs",
-              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Models\\User\\SaveUserModel.cs",
-              "RelativeToolTip": "Domain\\Models\\User\\SaveUserModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T23:44:36.638Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 31,
               "Title": "SocialRedContext.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Context\\SocialRedContext.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Context\\SocialRedContext.cs",
@@ -619,7 +577,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 27,
               "Title": "Infraestructure.csproj",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Infraestructure.csproj",
               "RelativeDocumentMoniker": "Infraestructure\\Infraestructure.csproj",
@@ -631,7 +589,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 28,
               "Title": "RedSocialUnit.Test.csproj",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\RedSocialUnit.Test\\RedSocialUnit.Test.csproj",
               "RelativeDocumentMoniker": "RedSocialUnit.Test\\RedSocialUnit.Test.csproj",
@@ -643,7 +601,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 30,
               "Title": "MockRepositoryUser.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Repositories\\Mock\\MockRepositoryUser.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Repositories\\Mock\\MockRepositoryUser.cs",
@@ -655,19 +613,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "20240830164242_AddUniqueConstraintToUserName.cs",
-              "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Migrations\\20240830164242_AddUniqueConstraintToUserName.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\Migrations\\20240830164242_AddUniqueConstraintToUserName.cs",
-              "ToolTip": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Migrations\\20240830164242_AddUniqueConstraintToUserName.cs",
-              "RelativeToolTip": "Infraestructure\\Migrations\\20240830164242_AddUniqueConstraintToUserName.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAYwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T16:42:43.259Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 32,
               "Title": "IRepositoryUser.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Interface\\Repositories\\IRepositoryUser.cs",
               "RelativeDocumentMoniker": "Domain\\Interface\\Repositories\\IRepositoryUser.cs",
@@ -679,7 +625,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 29,
               "Title": "UserServiceTest.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\RedSocialUnit.Test\\Users\\UserServiceTest.cs",
               "RelativeDocumentMoniker": "RedSocialUnit.Test\\Users\\UserServiceTest.cs",
@@ -691,7 +637,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 33,
               "Title": "ExtensionService.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\Extensions\\ExtensionService.cs",
               "RelativeDocumentMoniker": "Aplication\\Extensions\\ExtensionService.cs",
@@ -703,7 +649,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 35,
               "Title": "TokenService.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\ValidationAcount\\TokenService.cs",
               "RelativeDocumentMoniker": "Aplication\\ValidationAcount\\TokenService.cs",
@@ -715,7 +661,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 34,
               "Title": "ValidacionActivarAccount.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\ValidationAcount\\ValidacionActivarAccount.cs",
               "RelativeDocumentMoniker": "Aplication\\ValidationAcount\\ValidacionActivarAccount.cs",
@@ -727,7 +673,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 36,
               "Title": "IServiceUser.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Interface\\Service\\IServiceUser.cs",
               "RelativeDocumentMoniker": "Domain\\Interface\\Service\\IServiceUser.cs",
@@ -739,7 +685,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 37,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\appsettings.json",
               "RelativeDocumentMoniker": "WebUI\\appsettings.json",
@@ -751,7 +697,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 38,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\EmailServices\\EmailService.cs",
               "RelativeDocumentMoniker": "Infraestructure\\EmailServices\\EmailService.cs",
@@ -763,7 +709,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 39,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Core\\GenericRepository.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Core\\GenericRepository.cs",
@@ -775,7 +721,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 45,
               "Title": "20240827070121_nullActivartoken.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Migrations\\20240827070121_nullActivartoken.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Migrations\\20240827070121_nullActivartoken.cs",
@@ -787,7 +733,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 40,
               "Title": "Domain.csproj",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Domain.csproj",
               "RelativeDocumentMoniker": "Domain\\Domain.csproj",
@@ -799,7 +745,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 41,
               "Title": "Extensions.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Extension\\Extensions.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Extension\\Extensions.cs",
@@ -811,7 +757,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 42,
               "Title": "WebUI.csproj",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\WebUI\\WebUI.csproj",
               "RelativeDocumentMoniker": "WebUI\\WebUI.csproj",
@@ -823,7 +769,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 43,
               "Title": "IEmailService.cs",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Interface\\EmailService\\IEmailService.cs",
               "RelativeDocumentMoniker": "Domain\\Interface\\EmailService\\IEmailService.cs",
@@ -835,7 +781,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 44,
               "Title": "Aplication.csproj",
               "DocumentMoniker": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\Aplication.csproj",
               "RelativeDocumentMoniker": "Aplication\\Aplication.csproj",

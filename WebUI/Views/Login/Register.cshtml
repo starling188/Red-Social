@@ -5,61 +5,101 @@
     ViewData["Title"] = "Registro";
 }
 
-<h2>Registro</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/Register.css" rel="stylesheet"> <!-- Enlace al CSS personalizado -->
+</head>
+<body>
+    <section class="vh-100 bg-image"
+             style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card card-custom-style" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-<form asp-action="Register" method="post">
+                                <form asp-action="Register" method="post">
+                                    <!-- Name Field -->
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Nombre" class="form-control form-control-lg" />
+                                        <label class="form-label" for="Nombre">Your Name</label>
+                                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                                    </div>
 
-    @if (!ViewData.ModelState.IsValid)
-    {
-        <div class="alert alert-danger">
-            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-            {
-                <p>@error.ErrorMessage</p>
-            }
+                                    <!-- Last Name Field -->
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Apellido" class="form-control form-control-lg" />
+                                        <label class="form-label" for="Apellido">Your Last Name</label>
+                                        <span asp-validation-for="Apellido" class="text-danger"></span>
+                                    </div>
+
+                                    <!-- Phone Field -->
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Telefono" class="form-control form-control-lg" />
+                                        <label class="form-label" for="Telefono">Phone Number</label>
+                                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                                    </div>
+
+                                    <!-- Email Field -->
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Correo" class="form-control form-control-lg" />
+                                        <label class="form-label" for="Correo">Your Email</label>
+                                        <span asp-validation-for="Correo" class="text-danger"></span>
+                                    </div>
+
+                                    <!-- Username Field -->
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="UserName" class="form-control form-control-lg" />
+                                        <label class="form-label" for="UserName">Username</label>
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                    </div>
+
+                                    <!-- Password Field -->
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Password" type="password" class="form-control form-control-lg" />
+                                        <label class="form-label" for="Password">Password</label>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+
+                                    <!-- Confirm Password Field -->
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="ConfirmPassword" type="password" class="form-control form-control-lg" />
+                                        <label class="form-label" for="ConfirmPassword">Repeat your password</label>
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+
+                                    <!-- Register Button -->
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            Register
+                                        </button>
+                                    </div>
+
+                                    <!-- Login Redirect -->
+                                    <p class="d-flex justify-content-center links">
+                                        Have already an account? <a asp-action="loguear" asp-controller="Login">Regístrate</a>
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    }
+    </section>
 
-    <div class="form-group">
-        <label asp-for="Nombre"></label>
-        <input asp-for="Nombre" class="form-control" />
-        <span asp-validation-for="Nombre" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Apellido"></label>
-        <input asp-for="Apellido" class="form-control" />
-        <span asp-validation-for="Apellido" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Telefono"></label>
-        <input asp-for="Telefono" class="form-control" />
-        <span asp-validation-for="Telefono" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Correo"></label>
-        <input asp-for="Correo" class="form-control" />
-        <span asp-validation-for="Correo" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="UserName"></label>
-        <input asp-for="UserName" class="form-control" />
-        <span asp-validation-for="UserName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" type="password" class="form-control" />
-        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Registrarse</button>
-
-
-</form>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
