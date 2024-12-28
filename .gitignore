@@ -1,1 +1,6 @@
 .vs/My Red Social/FileContentIndex/
+# Archivos de compilación
+# Ignorar las carpetas bin y obj en todos los proyectos de la solución
+**/bin/
+**/obj/
+.vs/
