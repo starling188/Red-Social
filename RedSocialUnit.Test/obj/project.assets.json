@@ -2702,6 +2702,7 @@
           "AutoMapper": "13.0.1",
           "Domain": "1.0.0",
           "Infraestructure": "1.0.0",
+          "MailKit": "4.7.1.1",
           "Microsoft.Extensions.DependencyInjection": "7.0.0"
         },
         "compile": {
@@ -8207,11 +8208,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\RedSocialUnit.Test\\RedSocialUnit.Test.csproj",
+      "projectUniqueName": "C:\\Users\\gonza\\Desktop\\Proyects\\Red Social\\Proyecto Red Social\\My Red Social\\RedSocialUnit.Test\\RedSocialUnit.Test.csproj",
       "projectName": "RedSocialUnit.Test",
-      "projectPath": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\RedSocialUnit.Test\\RedSocialUnit.Test.csproj",
+      "projectPath": "C:\\Users\\gonza\\Desktop\\Proyects\\Red Social\\Proyecto Red Social\\My Red Social\\RedSocialUnit.Test\\RedSocialUnit.Test.csproj",
       "packagesPath": "C:\\Users\\gonza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\RedSocialUnit.Test\\obj\\",
+      "outputPath": "C:\\Users\\gonza\\Desktop\\Proyects\\Red Social\\Proyecto Red Social\\My Red Social\\RedSocialUnit.Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gonza\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8222,21 +8223,20 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\Aplication.csproj": {
-              "projectPath": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\Aplication.csproj"
+            "C:\\Users\\gonza\\Desktop\\Proyects\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\Aplication.csproj": {
+              "projectPath": "C:\\Users\\gonza\\Desktop\\Proyects\\Red Social\\Proyecto Red Social\\My Red Social\\Aplication\\Aplication.csproj"
             },
-            "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Domain.csproj"
+            "C:\\Users\\gonza\\Desktop\\Proyects\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\gonza\\Desktop\\Proyects\\Red Social\\Proyecto Red Social\\My Red Social\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Infraestructure.csproj": {
-              "projectPath": "C:\\Users\\gonza\\Desktop\\Onion\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Infraestructure.csproj"
+            "C:\\Users\\gonza\\Desktop\\Proyects\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\gonza\\Desktop\\Proyects\\Red Social\\Proyecto Red Social\\My Red Social\\Infraestructure\\Infraestructure.csproj"
             }
           }
         }
@@ -8293,7 +8293,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

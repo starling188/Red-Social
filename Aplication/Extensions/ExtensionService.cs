@@ -3,6 +3,7 @@ using Aplication.Service;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Aplication.ValidationAcount;
+using Domain.Interface.EmailService;
 
 namespace Aplication.Extension
 {
@@ -14,6 +15,7 @@ namespace Aplication.Extension
             services.AddTransient<IServiceLogin, ServiceLogin>();
             services.AddTransient<TokenService>();
             services.AddTransient<ValidacionActivarAccount>();
+            services.AddTransient<IEmailService, EmailService>();
         }
     }
 }

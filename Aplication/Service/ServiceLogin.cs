@@ -4,7 +4,7 @@ using Domain.Entities;
 using Domain.Interface.Repositories;
 using Domain.Interface.Service;
 using Domain.Models;
-using Domain.Models.Login;
+
 
 namespace Aplication.Service
 {

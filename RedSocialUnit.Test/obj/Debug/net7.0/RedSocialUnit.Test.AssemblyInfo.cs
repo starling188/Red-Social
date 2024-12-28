@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RedSocialUnit.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+212d424037dbd30561e892897033acc261208bcc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a6ec8c01cf3d0e58cef1f3cfdcc0797adf6c08c")]
 [assembly: System.Reflection.AssemblyProductAttribute("RedSocialUnit.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RedSocialUnit.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -11,6 +11,7 @@
           "AutoMapper": "13.0.1",
           "Domain": "1.0.0",
           "Infraestructure": "1.0.0",
+          "MailKit": "4.7.1.1",
           "Microsoft.Extensions.DependencyInjection": "7.0.0"
         },
         "runtime": {
@@ -645,7 +646,10 @@
       },
       "Domain/1.0.0": {
         "runtime": {
-          "Domain.dll": {}
+          "Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Infraestructure/1.0.0": {
@@ -658,7 +662,10 @@
           "Microsoft.Extensions.DependencyInjection": "7.0.0"
         },
         "runtime": {
-          "Infraestructure.dll": {}
+          "Infraestructure.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

@@ -15,34 +15,42 @@
     <!-- Incluye los recursos CSS y JS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/Login.css"> <!-- Aquí enlazas tu archivo CSS personalizado -->
+    <link rel="stylesheet" href="/css/Login/Login.css"> <!-- Aquí enlazas tu archivo CSS personalizado -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="/js/site.js" defer></script> <!-- Aquí enlazas tu archivo JS personalizado -->
+    
 </head>
 <body>
     <div class="container">
 
-       
-        @if (TempData["ErrorMessage"] != null)
-        {
-            <div class="alert alert-danger" role="alert">
-                @TempData["ErrorMessage"]
-            </div>
-        }
-        @if (TempData["WarningMessage"] != null)
-        {
-            <div class="alert alert-warning" role="alert">
-                @TempData["WarningMessage"]
-            </div>
-        }
 
+        <div class="alerts-container">
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["ErrorMessage"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+
+            @if (TempData["WarningMessage"] != null)
+            {
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    @TempData["WarningMessage"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+        </div>
+
+   
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
                     <h3>Iniciar Sesión</h3>
-
-  
                 </div>
                 <div class="card-body">
                     <form asp-action="Loguear" method="post">

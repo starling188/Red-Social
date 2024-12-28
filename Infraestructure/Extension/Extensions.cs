@@ -18,7 +18,7 @@ namespace Infraestructure.Extension
             services.AddTransient<IRepositoryUser, UserRepository>();
             services.AddTransient<IRepositoryPublicaciones, PublicacionRepository>();
             services.AddTransient<IRepositoryLogin, LoginRepositorio>();
-            services.AddTransient<IEmailService, EmailService>();
+            //services.AddTransient<IEmailService, EmailService>();
 
     
         }

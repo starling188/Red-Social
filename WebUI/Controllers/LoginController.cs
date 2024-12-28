@@ -62,11 +62,12 @@ namespace WebUI.Controllers
 
                 if (result)
                 {
-                    ViewData["Mensaje"] = "Contraseña reestablecida con éxito";
+                    TempData["SuccessMessage"] = "Contraseña reestablecida con éxito";
+                    return RedirectToAction("Loguear", "Login");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "El nombre de usuario no fue encontrado");
+                    TempData["ErrorMessage"] = "El nombre de usuario no fue encontrado";
                 }
             }
             return View(model);
@@ -106,7 +107,7 @@ namespace WebUI.Controllers
 
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, usuario.Nombre),
+                        new Claim(ClaimTypes.Name, usuario.UserName),
                         new Claim("Correo", usuario.Correo)
 
                     };

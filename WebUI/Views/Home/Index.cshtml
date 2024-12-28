@@ -1,18 +1,131 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;
+    ViewData["Title"] = "Inicio";
 }
 
 
-<div class="text-center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Incluye los recursos CSS y JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Red Social</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="~/css/HomeIndex/InicioWeb.css">
 
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-success" role="alert">
-            @TempData["SuccessMessage"]
+    
+</head>
+<body>
+
+    <div class="alerts-container">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    </div>
+
+    <!-- Wrapper for Sidebar and Main Content -->
+    <div class="wrapper">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-search"></i> Search</a></li>
+                <li><a href="#"><i class="fas fa-plus"></i> Create</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Friends</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top bar with Profile Picture and Logout -->
+            <div class="top-bar">
+                <a href="@Url.Action("Salir","Home")" class="logout">Log out</a>
+                <div class="profile-info">
+                    <img src="https://via.placeholder.com/40" alt="User" class="profile-picture">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span class="username">@User.Identity.Name</span>
+                    }
+                    else
+                    {
+                        <span class="username">Invitado</span>
+                    }
+                </div>
+            </div>
+
+            <!-- Content Layout -->
+            <div class="content-layout">
+                <!-- Section for Posts -->
+                <div class="posts-section">
+                    <h2>Feed</h2>
+
+                    <!-- Individual Post -->
+                    <div class="post">
+                        <div class="post-header">
+                            <img src="https://via.placeholder.com/40" alt="User" class="post-user-picture">
+                            <div>
+                                <span class="post-username">user_1</span>
+                                <span class="post-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>This is the content of the post. Here you can write anything or upload photos.</p>
+                            <img src="https://via.placeholder.com/400x200" alt="Post Image" class="post-image">
+                        </div>
+                        <div class="post-actions">
+                            <a href="#"><i class="fas fa-heart"></i> Like</a>
+                            <a href="#"><i class="fas fa-comment"></i> Comment</a>
+                            <a href="#"><i class="fas fa-share"></i> Share</a>
+                        </div>
+                    </div>
+
+                    <!-- Repeat more posts -->
+                </div>
+
+                <!-- Friends Section -->
+                <div class="friends-section">
+                    <h3>Suggested for you</h3>
+                    <ul>
+                        <li>
+                            <img src="https://via.placeholder.com/40" alt="User 1">
+                            <div class="suggested-user">
+                                <span>Pedro</span><br>
+                                <span>1 follower</span>
+                            </div>
+                            <a href="#" class="follow-btn">Follow</a>
+                        </li>
+                        <li>
+                            <img src="https://via.placeholder.com/40" alt="User 2">
+                            <div class="suggested-user">
+                                <span>Juan</span><br>
+                                <span>3 followers</span>
+                            </div>
+                            <a href="#" class="follow-btn">Follow</a>
+                        </li>
+                        <!-- Add more suggested users -->
+                    </ul>
+                </div>
+            </div>
         </div>
+    </div>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
     }
 
-
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</body>
+</html>
