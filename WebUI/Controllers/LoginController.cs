@@ -1,6 +1,5 @@
-﻿
-
-using Domain.Interface.Service;
+﻿using Domain.Interface.Service.login;
+using Domain.Interface.Service.user;
 using Domain.Models;
 using Domain.Models.Login;
 using Domain.Models.User;
@@ -108,8 +107,8 @@ namespace WebUI.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, usuario.UserName),
-                        new Claim("Correo", usuario.Correo)
-
+                        new Claim("Correo", usuario.Correo),
+                        new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString())
                     };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

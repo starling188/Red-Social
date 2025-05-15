@@ -1,7 +1,5 @@
 ﻿
 
-
-
 namespace Domain.Core
 {
     public abstract class BaseEntity

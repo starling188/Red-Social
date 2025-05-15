@@ -4,6 +4,7 @@ using Infraestructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(SocialRedContext))]
-    partial class SocialRedContextModelSnapshot : ModelSnapshot
+    [Migration("20250107015219_AddFotoPerfilToUser")]
+    partial class AddFotoPerfilToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,59 +94,6 @@ namespace Infraestructure.Migrations
                     b.HasIndex("UsuarioID");
 
                     b.ToTable("Comentarios");
-                });
-
-            modelBuilder.Entity("Domain.Entities.MediaFile", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ContentType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FilePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FileType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("UploadedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
-
-                    b.Property<int>("UploadedByUserId")
-                        .HasColumnType("int");
-
-                  
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UploadedByUserId");
-
-                
-
-                    b.ToTable("MediaFiles", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Publicaciones", b =>
@@ -293,17 +243,6 @@ namespace Infraestructure.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("Domain.Entities.MediaFile", b =>
-                {
-                    b.HasOne("Domain.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UploadedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    
-                });
-
             modelBuilder.Entity("Domain.Entities.Publicaciones", b =>
                 {
                     b.HasOne("Domain.Entities.User", "Usuario")
@@ -325,8 +264,6 @@ namespace Infraestructure.Migrations
                     b.Navigation("Amistades");
 
                     b.Navigation("Comentarios");
-
-                    b.Navigation("MediaFiles");
 
                     b.Navigation("Publicaciones");
                 });

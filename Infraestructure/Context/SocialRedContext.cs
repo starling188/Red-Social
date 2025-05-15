@@ -11,6 +11,8 @@ namespace Infraestructure.Context
         public DbSet<Comentarios> Comentarios { get; set; }
         public DbSet<Amistades> Amistades { get; set; }
 
+        public DbSet<MediaFile> MediaFiles { get; set; }    
+
         public SocialRedContext(DbContextOptions<SocialRedContext> options)
             : base(options)
         {
@@ -19,8 +21,8 @@ namespace Infraestructure.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
             
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -44,6 +46,8 @@ namespace Infraestructure.Context
 
                 entity.Property(e => e.Password).IsRequired().HasMaxLength(255);
                 entity.Property(e => e.EstadoActivacion);
+
+                entity.Property(e => e.FotoPerfil).HasMaxLength(255);
             });
 
             #endregion
@@ -106,6 +110,28 @@ namespace Infraestructure.Context
 
             #endregion
 
+
+            #region Configuracion MediaFile
+
+            modelBuilder.Entity<MediaFile>(entity =>
+            {
+                entity.ToTable("MediaFiles"); // Nombre de la tabla en la BD
+                entity.HasKey(m => m.Id); // Llave primaria
+
+                // Relación con el usuario que sube el archivo
+                entity.HasOne(m => m.User)
+                    .WithMany(u => u.UserMediaFiles)
+                    .HasForeignKey(m => m.UploadedByUserId)
+                    .OnDelete(DeleteBehavior.Restrict); // Aseguramos que no se borren los archivos si se elimina el usuario
+
+                // Validaciones o configuraciones adicionales si es necesario
+                entity.Property(m => m.FileName).IsRequired();
+                entity.Property(m => m.FilePath).IsRequired();
+                entity.Property(m => m.ContentType).IsRequired();
+                entity.Property(m => m.UploadedAt).HasDefaultValueSql("GETDATE()"); // Establecer la fecha de subida por defecto
+            });
+
+            #endregion
         }
     }
 }

@@ -1,17 +1,15 @@
-﻿
-
-using Aplication.Core;
+﻿using Aplication.Core;
 using Aplication.ValidationAcount;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interface.EmailService;
 using Domain.Interface.Repositories;
-using Domain.Interface.Service;
+using Domain.Interface.Service.user;
 using Domain.Models.User;
 
-namespace Aplication.Service
+namespace Aplication.Service.user
 {
-    public class UserServices : GenericService<SaveUserModel, User> , IServiceUser
+    public class UserServices : GenericService<SaveUserModel, User>, IServiceUser
     {
         private readonly IRepositoryUser _UserRepo;
         private readonly IMapper _map;
@@ -20,7 +18,7 @@ namespace Aplication.Service
         private readonly IEmailService _emailService;
 
 
-        public UserServices(IRepositoryUser use, IMapper map, IRepositoryLogin log, TokenService token, IEmailService emailSer) : base (use, map )
+        public UserServices(IRepositoryUser use, IMapper map, IRepositoryLogin log, TokenService token, IEmailService emailSer) : base(use, map)
         {
             _log = log;
             _map = map;
@@ -48,7 +46,7 @@ namespace Aplication.Service
 
             var entity = _map.Map<User>(model);
             entity.CreatedBy = "Sistema";
-            entity.Password =  await _log.HashearContraseñaAsync(model.Password);
+            entity.Password = await _log.HashearContraseñaAsync(model.Password);
 
             //generar token
             var tok = _tokenSer.GeneradorToken();
@@ -57,18 +55,18 @@ namespace Aplication.Service
             //envio de correo
             await _emailService.EnviarCorreoActivacionAsync(entity.Correo, tok);
 
-            
+
             // Llamar al método Add del repositorio
             await _UserRepo.Add(entity);
         }
 
-      
+
 
 
         public override async Task Save()
         {
             await _UserRepo.Save();
-            
+
         }
 
 

@@ -15,8 +15,10 @@ namespace Domain.Entities
         public bool EstadoActivacion { get; set; } = false;
         public string? ActivacionToken { get; set; }
 
+        public string? FotoPerfil { get; set; }
 
 
+        public virtual ICollection<MediaFile> UserMediaFiles { get; set; } // Relación con archivos de usuario
         public virtual ICollection<Publicaciones> Publicaciones { get; set; }
         public virtual ICollection<Comentarios> Comentarios { get; set; }
         public virtual ICollection<Amistades> Amistades { get; set; }

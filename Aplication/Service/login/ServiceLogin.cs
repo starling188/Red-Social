@@ -1,12 +1,11 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Entities;
 using Domain.Interface.Repositories;
-using Domain.Interface.Service;
+using Domain.Interface.Service.login;
 using Domain.Models;
 
 
-namespace Aplication.Service
+namespace Aplication.Service.login
 {
     public class ServiceLogin : IServiceLogin
     {
@@ -17,10 +16,10 @@ namespace Aplication.Service
         {
             _map = map;
             _log = log;
-            
+
         }
 
-        public async Task<bool> RestablecerPassword(string username,  string newpassword)
+        public async Task<bool> RestablecerPassword(string username, string newpassword)
         {
             return await _log.ReestablecerPassword(username, newpassword);
         }

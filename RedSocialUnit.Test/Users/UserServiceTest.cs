@@ -1,9 +1,4 @@
-﻿
-
-
-
-
-using Aplication.Service;
+﻿using Aplication.Service.user;
 using Aplication.ValidationAcount;
 using AutoMapper;
 using Domain.Interface.EmailService;

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Infraestructure.Extension;
 using Aplication.Extension;
 using Aplication.Dtos;
-using AutoMapper;
+
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +18,8 @@ builder.Services.AddDbContext<SocialRedContext>(opciones =>
 
 
 builder.Services.AddApplicationServices(builder.Configuration);
+
+
 
 // Registrar los repositorios de la capa de infraestructura
 builder.Services.ExtensionRepository(builder.Configuration);
@@ -36,6 +38,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 
 var app = builder.Build();
+
+app.UseStaticFiles();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

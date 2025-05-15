@@ -55,13 +55,14 @@
             <div class="top-bar">
                 <a href="@Url.Action("Salir","Home")" class="logout">Log out</a>
                 <div class="profile-info">
-                    <img src="https://via.placeholder.com/40" alt="User" class="profile-picture">
+                    <img src="https://via.placeholder.com/40" alt="User" class="profile-picture" onclick="window.location.href='@Url.Action("SubidaFoto", "Home")'">
+
                     @if (User.Identity.IsAuthenticated)
                     {
                         <span class="username">@User.Identity.Name</span>
                     }
                     else
-                    {
+                    {   
                         <span class="username">Invitado</span>
                     }
                 </div>
