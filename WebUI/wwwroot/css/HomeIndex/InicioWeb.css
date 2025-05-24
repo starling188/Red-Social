@@ -66,9 +66,14 @@ body {
 }
 
 .profile-picture {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 10px;
+    object-fit: cover; /* Esto asegura que la imagen se recorte correctamente */
+    border: 2px solid #333; /* Opcional: añade un borde sutil */
 }
+
 
 .username {
     font-size: 18px;

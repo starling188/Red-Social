@@ -1,0 +1,292 @@
+﻿@model Domain.Models.User.PerfilUsuarioDto
+@{
+    Layout = null;
+    ViewData["Title"] = $"{Model.UserName} • Red Social";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- Meta tags para compartir en redes sociales -->
+    <meta property="og:title" content="@Model.UserName en Red Social" />
+    <meta property="og:description" content="Perfil de @Model.UserName - @Model.CantidadPublicaciones publicaciones, @Model.CantidadSeguidores seguidores" />
+    @if (!string.IsNullOrEmpty(Model.FotoPerfil))
+    {
+        <meta property="og:image" content="@Model.FotoPerfil" />
+    }
+
+    <link rel="stylesheet" href="/css/Profile/Profile.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+    <!-- Barra de navegación superior -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="/">
+                    <h1>Red Social</h1>
+                </a>
+            </div>
+            <div class="navbar-search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar" />
+            </div>
+            <div class="navbar-icons">
+                <a href="@Url.Action("Index", "Home")"><i class="fas fa-home"></i></a>
+                <a href="/mensajes"><i class="far fa-paper-plane"></i></a>
+                <a href="/explorar"><i class="far fa-compass"></i></a>
+                <a href="/notificaciones"><i class="far fa-heart"></i></a>
+                <a href="/perfil" class="navbar-profile">
+                    @if (User.Identity.IsAuthenticated && !string.IsNullOrEmpty(Model.FotoPerfil) && User.Identity.Name == Model.UserName)
+                    {
+                        <img src="@Model.FotoPerfil" alt="Perfil" />
+                    }
+                    else
+                    {   
+                        <i class="far fa-user-circle"></i>
+                    }
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="perfil-container">
+        <!-- Cabecera del perfil -->
+        <div class="perfil-header">
+            <div class="perfil-foto">
+                @if (!string.IsNullOrEmpty(Model.FotoPerfil))
+                {
+                    <img src="@Model.FotoPerfil" alt="@Model.UserName" />
+                }
+                else
+                {
+                    <div class="perfil-foto-placeholder">
+                        <span>@Model.UserName.Substring(0, 1).ToUpper()</span>
+                    </div>
+                }
+            </div>
+            <div class="perfil-info">
+                <div class="perfil-username-section">
+                    <h1 class="perfil-username">
+                        @Model.UserName
+                        @if (Model.CantidadSeguidores > 1000)
+                        {
+                            <i class="fas fa-check-circle verificado" title="Cuenta verificada"></i>
+                        }
+                    </h1>
+                    <div class="perfil-actions">
+                        @if (User.Identity.IsAuthenticated && User.Identity.Name != Model.UserName)
+                        {
+                            <button class="btn-seguir">Seguir</button>
+                            <button class="btn-mensaje">Mensaje</button>
+                            <div class="dropdown">
+                                <button class="btn-opciones"><i class="fas fa-ellipsis-h"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#"><i class="fas fa-user-slash"></i> Bloquear</a>
+                                    <a href="#"><i class="fas fa-flag"></i> Reportar</a>
+                                    <a href="#"><i class="fas fa-share"></i> Compartir perfil</a>
+                                </div>
+                            </div>
+                        }
+                        else if (User.Identity.IsAuthenticated && User.Identity.Name == Model.UserName)
+                        {
+                            <a href="/Perfil/Editar" class="btn-editar">Editar perfil</a>
+                            <a href="/Configuracion" class="btn-config"><i class="fas fa-cog"></i></a>
+                        }
+                    </div>
+                </div>
+
+                <div class="perfil-stats">
+                    <div class="stat-item">
+                        <span class="stat-count">@Model.CantidadPublicaciones</span> publicaciones
+                    </div>
+                    <div class="stat-item seguidores-popup">
+                        <span class="stat-count">@Model.CantidadSeguidores</span> seguidores
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-count">@(Model.CantidadSeguidores / 2)</span> seguidos
+                    </div>
+                </div>
+
+                <div class="perfil-bio">
+                    <div class="perfil-nombre">@Model.Nombre @Model.Apellido</div>
+                    <div class="perfil-descripcion">
+                        <!-- Descripción ficticia basada en el nombre -->
+                        <p>Compartiendo momentos 📸 | @@@Model.UserName</p>
+                        <p>Archivos multimedia: @Model.CantidadArchivosMultimedia</p>
+                        <p><a href="#" class="bio-link">www.ejemplo.com/@Model.UserName</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historias destacadas -->
+        <div class="historias-destacadas">
+            <div class="historia-item nueva">
+                <div class="historia-img">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <span>Nueva</span>
+            </div>
+            @if (Model.RutasMultimedia != null && Model.RutasMultimedia.Any())
+            {
+                for (int i = 0; i < Math.Min(5, Model.RutasMultimedia.Count); i++)
+                {
+                    <div class="historia-item">
+                        <div class="historia-img">
+                            <img src="@Model.RutasMultimedia[i]" alt="Historia destacada" />
+                        </div>
+                        <span>Destacado @(i + 1)</span>
+                    </div>
+                }
+            }
+        </div>
+
+        <!-- Navegación de pestañas -->
+        <div class="perfil-tabs">
+            <a href="#" class="tab active">
+                <i class="fas fa-th"></i> PUBLICACIONES
+            </a>
+            <a href="#" class="tab">
+                <i class="fas fa-play-circle"></i> REELS
+            </a>
+            <a href="#" class="tab">
+                <i class="fas fa-bookmark"></i> GUARDADOS
+            </a>
+            <a href="#" class="tab">
+                <i class="fas fa-tag"></i> ETIQUETADOS
+            </a>
+        </div>
+
+        <!-- Galería de archivos multimedia -->
+        <div class="perfil-galeria">
+            @if (Model.RutasMultimedia != null && Model.RutasMultimedia.Any())
+            {
+                @foreach (var ruta in Model.RutasMultimedia)
+                {
+                    <div class="galeria-item">
+                        <img src="@ruta" alt="Archivo" />
+                        @if (ruta.Contains("video") || ruta.EndsWith(".mp4"))
+                        {
+                            <div class="item-icon video">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        }
+                        @if (ruta.Contains("multi"))
+                        {
+                            <div class="item-icon multiple">
+                                <i class="far fa-clone"></i>
+                            </div>
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="no-publicaciones">
+                    <i class="fas fa-camera"></i>
+                    <p>No hay publicaciones aún</p>
+                    @if (User.Identity.IsAuthenticated && User.Identity.Name == Model.UserName)
+                    {
+                        <a href="/Publicaciones/Crear" class="btn-crear-publicacion">Crear publicación</a>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Modal de seguidores (oculto por defecto) -->
+    <div id="seguidoresModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Seguidores</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="seguidores-lista">
+                    <!-- Lista ficticia de seguidores -->
+                    <div class="seguidor-item">
+                        <div class="seguidor-foto">
+                            <div class="perfil-foto-placeholder">
+                                <span>U</span>
+                            </div>
+                        </div>
+                        <div class="seguidor-info">
+                            <div class="seguidor-username">usuario1</div>
+                            <div class="seguidor-nombre">Usuario Ejemplo</div>
+                        </div>
+                        <button class="btn-seguir small">Seguir</button>
+                    </div>
+                    <div class="seguidor-item">
+                        <div class="seguidor-foto">
+                            <div class="perfil-foto-placeholder">
+                                <span>E</span>
+                            </div>
+                        </div>
+                        <div class="seguidor-info">
+                            <div class="seguidor-username">ejemplo2</div>
+                            <div class="seguidor-nombre">Ejemplo Dos</div>
+                        </div>
+                        <button class="btn-seguir siguiendo small">Siguiendo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Acerca de</a>
+            <a href="#">Ayuda</a>
+            <a href="#">Privacidad</a>
+            <a href="#">Términos</a>
+            <a href="#">Ubicaciones</a>
+            <a href="#">Idioma</a>
+        </div>
+        <div class="footer-copyright">
+            © 2025 Red Social
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Modal de seguidores
+        document.addEventListener('DOMContentLoaded', function() {
+            const seguidoresLink = document.querySelector('.seguidores-popup');
+            const modal = document.getElementById('seguidoresModal');
+            const closeBtn = document.querySelector('.close');
+
+            if (seguidoresLink && modal) {
+                seguidoresLink.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                });
+
+                closeBtn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+
+                window.addEventListener('click', function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+
+            // Cambio de pestañas
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

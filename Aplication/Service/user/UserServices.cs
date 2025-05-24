@@ -61,10 +61,37 @@ namespace Aplication.Service.user
         }
 
 
+        public async Task<PerfilUsuarioDto> GetProfDataUser(string username)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                throw new ArgumentException("El nombre de usuario no puede ser nulo o vacío.");
+            }
 
+            var user = await _UserRepo.GetProfileWithDataAsync(username);
+
+            if (user == null)
+            {
+                throw new ArgumentException("No se encontró el perfil del usuario.");
+
+            }
+
+            var perfil = _map.Map<PerfilUsuarioDto>(user);
+            return perfil;
+        }
+
+
+        public async Task<List<SearchUserDto>> SearchUserByUserName(string username)
+        {
+            var user = await _UserRepo.SearchUsersByUserNameAsync(username);
+
+           return _map.Map<List<SearchUserDto>>(user);
+        }
+        
 
         public override async Task Save()
         {
+            
             await _UserRepo.Save();
 
         }
