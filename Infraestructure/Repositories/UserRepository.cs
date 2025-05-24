@@ -97,6 +97,29 @@ namespace Infraestructure.Repositories
 
         //Metodos adicionales
 
+
+    
+
+
+        //Metodo Para tu perfil de usuario
+        public async Task<User> GetProfileWithDataAsync(string username)
+        {
+            var user = await _context.Users.
+                Include(u => u.UserMediaFiles)
+                .Include(u => u.Publicaciones)
+                .Include(u => u.Amistades).
+                FirstOrDefaultAsync(u => u.UserName == username && u.IsActive);
+
+            if( user == null)
+            {
+                throw new NotFoundException($"no se encontro el usuario con Username:{user}");
+
+            }
+
+            return user;
+        }
+
+
         public async Task<User?> GetByCondition(Expression<Func<User, bool>> predicate)
         {
             return await _context.Users
@@ -107,6 +130,12 @@ namespace Infraestructure.Repositories
         public async Task<User> GetByUsernameAsync(string username)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        }
+
+        public async Task<List<User>> SearchUsersByUserNameAsync(string username)
+        {
+            return await _context.Users.Where(u => u.UserName.Contains(username) && u.IsActive).ToListAsync();
+
         }
     }
 }

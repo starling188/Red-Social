@@ -1,0 +1,198 @@
+﻿@model Domain.Models.User.PerfilUsuarioDto
+
+@{
+    ViewData["Title"] = $"Perfil de {Model.UserName}";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Red Social</title>
+
+    <!-- Incluye los recursos CSS y JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/HomeIndex/InicioWeb.css">
+    <link rel="stylesheet" href="~/css/Search/search-modal.css">
+    <link rel="stylesheet" href="~/css/Profile/user-profile.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Estilos inline para asegurar que se apliquen */
+        .profile-picture {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
+            border: 2px solid #333 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor de alertas -->
+    <div class="alerts-container">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle mr-2"></i> @TempData["SuccessMessage"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    </div>
+
+    <!-- Incluir el modal de búsqueda -->
+    @Html.Partial("_SearchModal")
+
+    <!-- Wrapper para Sidebar y Contenido Principal -->
+    <div class="wrapper">
+        <!-- Barra lateral de navegación -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
+                <li><a href="#" id="searchButton"><i class="fas fa-search"></i> <span>Buscar</span></a></li>
+                <li><a href="#"><i class="fas fa-compass"></i> <span>Explorar</span></a></li>
+                <li><a href="#"><i class="fas fa-paper-plane"></i> <span>Mensajes</span></a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> <span>Notificaciones</span></a></li>
+                <li><a href="#"><i class="fas fa-plus-square"></i> <span>Crear</span></a></li>
+                <li>
+                    <a asp-action="Profile" asp-controller="Home">
+                        <i class="fas fa-user-circle"></i> <span>Perfil</span>
+                    </a>
+                </li>
+                <li><a href="#"><i class="fas fa-cog"></i> <span>Configuración</span></a></li>
+                <li><a href="@Url.Action("Salir","Home")"><i class="fas fa-sign-out-alt"></i> <span>Cerrar sesión</span></a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenido Principal -->
+        <div class="main-content">
+            <!-- Barra superior con foto de perfil -->
+            <div class="top-bar">
+                <div class="profile-info">
+                    @if (!string.IsNullOrEmpty(ViewBag.PhotoPerfil))
+                    {
+                        <img src="@ViewBag.PhotoPerfil" alt="User" class="profile-picture">
+                    }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/40" alt="User" class="profile-picture">
+                    }
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span class="username">@User.Identity.Name</span>
+                    }
+                    else
+                    {
+                        <span class="username">Invitado</span>
+                    }
+                </div>
+            </div>
+
+            <!-- Contenido del perfil -->
+            <div class="profile-container">
+                <!-- Cabecera del perfil -->
+                <div class="profile-header">
+                    <img src="@(string.IsNullOrEmpty(Model.FotoPerfil) ? "https://via.placeholder.com/150" : Model.FotoPerfil)" alt="@Model.UserName" class="profile-avatar">
+
+                    <div class="profile-info-container">
+                        <div class="profile-username">
+                            @Model.UserName
+                            <button class="follow-button">Seguir</button>
+                        </div>
+
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">@Model.CantidadPublicaciones</span>
+                                <span class="stat-label">publicaciones</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">@Model.CantidadSeguidores</span>
+                                <span class="stat-label">seguidores</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">0</span>
+                                <span class="stat-label">seguidos</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-bio">
+                            <div class="profile-fullname">@(string.IsNullOrEmpty(Model.Nombre) ? Model.UserName : $"{Model.Nombre} {Model.Apellido}")</div>
+                            <p>Bienvenido a mi perfil</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestañas del perfil -->
+                <div class="profile-tabs">
+                    <div class="profile-tab active"><i class="fas fa-th"></i> Publicaciones</div>
+                    <div class="profile-tab"><i class="fas fa-film"></i> Videos</div>
+                    <div class="profile-tab"><i class="fas fa-bookmark"></i> Guardados</div>
+                    <div class="profile-tab"><i class="fas fa-tag"></i> Etiquetados</div>
+                </div>
+
+                <!-- Contenido del perfil (publicaciones) -->
+                <div class="profile-content">
+                    @if (Model.CantidadPublicaciones > 0)
+                    {
+                        @for (int i = 0; i < Model.CantidadPublicaciones; i++)
+                        {
+                            <div class="profile-post">
+                                <img src="https://via.placeholder.com/300" alt="Post">
+                                <div class="post-overlay">
+                                    <div class="post-stats">
+                                        <div class="post-stat">
+                                            <i class="fas fa-heart"></i> 45
+                                        </div>
+                                        <div class="post-stat">
+                                            <i class="fas fa-comment"></i> 12
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="no-posts">
+                            <i class="fas fa-camera"></i>
+                            <h3>No hay publicaciones</h3>
+                            <p>Cuando @Model.UserName comparta fotos, aparecerán aquí.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para las alertas -->
+    <script>
+        // Función para hacer que las alertas desaparezcan automáticamente
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+
+            alerts.forEach(alert => {
+                // Desaparecer después de 5 segundos
+                setTimeout(() => {
+                    alert.classList.add('fade-out');
+
+                    // Eliminar del DOM después de la animación
+                    setTimeout(() => {
+                        alert.remove();
+                    }, 500);
+                }, 5000);
+            });
+        });
+    </script>
+
+    <!-- Script del modal de búsqueda -->
+    <script src="~/js/search-modal.js"></script>
+    <script src="~/js/user-profile.js"></script>
+</body>
+</html>

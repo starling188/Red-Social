@@ -18,17 +18,16 @@
     <link rel="stylesheet" href="/css/Login/Login.css"> <!-- Aquí enlazas tu archivo CSS personalizado -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    
+
 </head>
 <body>
     <div class="container">
-
-
+        <!-- Contenedor de alertas -->
         <div class="alerts-container">
             @if (TempData["ErrorMessage"] != null)
             {
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    @TempData["ErrorMessage"]
+                    <i class="fas fa-exclamation-circle mr-2"></i> @TempData["ErrorMessage"]
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -38,7 +37,7 @@
             @if (TempData["WarningMessage"] != null)
             {
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    @TempData["WarningMessage"]
+                    <i class="fas fa-exclamation-triangle mr-2"></i> @TempData["WarningMessage"]
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -46,7 +45,6 @@
             }
         </div>
 
-   
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
@@ -54,15 +52,11 @@
                 </div>
                 <div class="card-body">
                     <form asp-action="Loguear" method="post">
-
-
-
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input asp-for="Correo" id="correoInput" class="form-control" placeholder="Correo" />
-                           
                         </div>
 
                         <div class="input-group form-group">
@@ -70,7 +64,6 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input asp-for="Contrasena" type="password" id="contrasenaInput" class="form-control" placeholder="Contraseña" />
-                           
                         </div>
 
                         <div class="row align-items-center remember">
@@ -94,9 +87,24 @@
         </div>
     </div>
 
-    @section Scripts {
-        <partial name="_ValidationScriptsPartial" />
-    }
+    <!-- Script para las alertas -->
+    <script>
+        // Función para hacer que las alertas desaparezcan automáticamente
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
 
+            alerts.forEach(alert => {
+                // Desaparecer después de 5 segundos
+                setTimeout(() => {
+                    alert.classList.add('fade-out');
+
+                    // Eliminar del DOM después de la animación
+                    setTimeout(() => {
+                        alert.remove();
+                    }, 500);
+                }, 5000);
+            });
+        });
+    </script>
 </body>
 </html>

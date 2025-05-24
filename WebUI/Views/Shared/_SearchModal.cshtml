@@ -1,0 +1,20 @@
+﻿<!-- Modal de búsqueda -->
+<div id="searchModal" class="search-modal">
+    <div class="search-container">
+        <div class="search-header">
+            <h3>Buscar usuarios</h3>
+            <button class="close-search" id="closeSearch" title="Cerrar">&times;</button>
+        </div>
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar usuarios..." autocomplete="off">
+        <div class="spinner" id="searchSpinner">
+            <i class="fas fa-spinner"></i>
+        </div>
+        <div class="no-results" id="noResults">
+            <i class="fas fa-search" style="font-size: 48px; color: #555; margin-bottom: 10px;"></i>
+            <p>No se encontraron resultados</p>
+        </div>
+        <div class="search-results" id="searchResults">
+            <!-- Los resultados de búsqueda se mostrarán aquí -->
+        </div>
+    </div>
+</div>

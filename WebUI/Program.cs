@@ -31,7 +31,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         options.LoginPath = "/Login/Loguear"; // Ruta de login
         options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-        
+        options.SlidingExpiration = true;
     });
 
 

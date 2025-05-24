@@ -1,0 +1,272 @@
+﻿/* Estilos para la página de perfil de usuario */
+
+/* Cabecera del perfil */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #444;
+    margin-right: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+    .profile-avatar:hover {
+        transform: scale(1.05);
+    }
+
+.profile-info-container {
+    flex-grow: 1;
+}
+
+.profile-username {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-stats {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.stat-item {
+    margin-right: 30px;
+    text-align: center;
+}
+
+.stat-value {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.stat-label {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.profile-fullname {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-bio p {
+    color: #ddd;
+    margin-bottom: 0;
+}
+
+.follow-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: all 0.2s ease;
+}
+
+    .follow-button:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+    }
+
+    .follow-button:active {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+    .follow-button.following {
+        background-color: #444;
+    }
+
+/* Pestañas del perfil */
+.profile-tabs {
+    display: flex;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.profile-tab {
+    padding: 15px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #aaa;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+    .profile-tab:hover {
+        color: #ddd;
+    }
+
+    .profile-tab.active {
+        color: #fff;
+        border-bottom: 2px solid #007bff;
+    }
+
+    .profile-tab i {
+        margin-right: 5px;
+    }
+
+/* Contenido del perfil (publicaciones) */
+.profile-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.profile-post {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+    .profile-post img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .profile-post:hover img {
+        transform: scale(1.05);
+    }
+
+.post-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-post:hover .post-overlay {
+    opacity: 1;
+}
+
+.post-stats {
+    display: flex;
+    color: white;
+}
+
+.post-stat {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+    .post-stat i {
+        margin-right: 5px;
+        font-size: 18px;
+    }
+
+/* Mensaje de no publicaciones */
+.no-posts {
+    grid-column: span 3;
+    text-align: center;
+    padding: 50px 0;
+}
+
+    .no-posts i {
+        font-size: 48px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .no-posts h3 {
+        margin-bottom: 10px;
+        color: #ddd;
+    }
+
+    .no-posts p {
+        color: #aaa;
+    }
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-container {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-avatar {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .profile-username {
+        justify-content: center;
+    }
+
+    .profile-stats {
+        justify-content: center;
+    }
+
+    .profile-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-tab {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+        .profile-tab i {
+            margin-right: 3px;
+        }
+
+    .stat-item {
+        margin-right: 15px;
+    }
+}
+

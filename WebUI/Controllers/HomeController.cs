@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 using Domain.Interface.Service.Perfil;
 using Domain.Models.perfilsmodel;
+using Domain.Interface.Service.user;
+using Domain.Models.User;
 
 
 
@@ -18,14 +20,17 @@ namespace WebUI.Controllers
     {
 
         private readonly IMediafile _mediafile;
+        private readonly IServiceUser _user;
 
-        public HomeController(IMediafile med)
+        public HomeController(IMediafile med , IServiceUser us)
         {
             _mediafile = med;
+            _user = us;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            await Getphoto();
             return View();
         }
 
@@ -39,9 +44,94 @@ namespace WebUI.Controllers
             return View();
         }
 
+        //for index extend
+        private async Task Getphoto()
+        {
+            var username = User.Identity?.Name;
+
+            if (!string.IsNullOrEmpty(username))
+            {
+
+                var usuario = await _user.GetProfDataUser(username);
+                ViewBag.PhotoPerfil = usuario.FotoPerfil;
+            }
+        }
+
+
+        //not remove this
+
+
+        [HttpGet]
+        public async Task<IActionResult> UserProfile(string username)
+        {
+
+            if (string.IsNullOrEmpty(username))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            try
+            {
+                // Obtener los datos del perfil del usuario
+                var perfil = await _user.GetProfDataUser(username);
+
+                // Cargar la foto de perfil para la barra superior
+                
+
+                return View(perfil);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View("Error");
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> SearchByUserNames(string username)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+                return Json(new List<SearchUserDto>()); // <-- CORREGIDO
+
+            try
+            {
+                var results = await _user.SearchUserByUserName(username);
+                return Json(results); // Esto será consumido por JavaScript
+            }
+            catch
+            {
+                return Json(new List<SearchUserDto>()); // <-- CORREGIDO
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+
+            var username = User.Identity.Name;
+
+            if (string.IsNullOrEmpty(username))
+            {
+
+                return RedirectToAction("Loguear", "Login");
+            }
+
+            try
+            {
+                var perfil = await _user.GetProfDataUser(username);
+                return View(perfil);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View("Error");
+            }
+
+        }
 
         [HttpPost]
-
         public async Task<IActionResult> SubidaFoto(MediaFileViewModel model)
         {
             if (!ModelState.IsValid)
