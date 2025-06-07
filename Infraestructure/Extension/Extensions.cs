@@ -1,6 +1,6 @@
 ﻿
 
-using Domain.Interface.EmailService;
+
 using Domain.Interface.Repositories;
 
 using Infraestructure.Repositories;
@@ -18,7 +18,7 @@ namespace Infraestructure.Extension
             services.AddTransient<IRepositoryUser, UserRepository>();
             services.AddTransient<IRepositoryPublicaciones, PublicacionRepository>();
             services.AddTransient<IRepositoryLogin, LoginRepositorio>();
-            //services.AddTransient<IEmailService, EmailService>();
+           
             services.AddTransient<IRepositoryMediaFile, MediaFileRepository>();
 
     

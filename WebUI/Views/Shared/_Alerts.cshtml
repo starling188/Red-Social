@@ -1,0 +1,89 @@
+﻿<!-- Contenedor de alertas estilo toast -->
+<div class="contenedor-toast" id="contenedor-toast">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="toast exito autoCierre" id="toast-success">
+            <div class="contenido">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <p>@TempData["SuccessMessage"]</p>
+                </div>
+            </div>
+            <button class="btn-cerrar" onclick="cerrarToast(this)">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="toast error autoCierre" id="toast-error">
+            <div class="contenido">
+                <i class="fas fa-exclamation-circle"></i>
+                <div>
+                    <p>@TempData["ErrorMessage"]</p>
+                </div>
+            </div>
+            <button class="btn-cerrar" onclick="cerrarToast(this)">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    }
+
+    @if (TempData["WarningMessage"] != null)
+    {
+        <div class="toast warning autoCierre" id="toast-warning">
+            <div class="contenido">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <p>@TempData["WarningMessage"]</p>
+                </div>
+            </div>
+            <button class="btn-cerrar" onclick="cerrarToast(this)">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    }
+
+    @if (TempData["InfoMessage"] != null)
+    {
+        <div class="toast info autoCierre" id="toast-info">
+            <div class="contenido">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <p>@TempData["InfoMessage"]</p>
+                </div>
+            </div>
+            <button class="btn-cerrar" onclick="cerrarToast(this)">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    }
+</div>
+
+<script>
+    function cerrarToast(btn) {
+        const toast = btn.closest('.toast');
+        toast.classList.add('cerrando');
+
+        setTimeout(() => {
+            toast.remove();
+        }, 200);
+    }
+
+    // Auto cerrar toasts después de 5 segundos
+    document.addEventListener('DOMContentLoaded', function() {
+        const toasts = document.querySelectorAll('.toast.autoCierre');
+
+        toasts.forEach(toast => {
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.classList.add('cerrando');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 200);
+                }
+            }, 5000);
+        });
+    });
+</script>

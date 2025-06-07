@@ -1,0 +1,145 @@
+﻿/* Sistema de alertas unificado - Estilo Toast */
+:root {
+    --exito: #3ab65c;
+    --error: #bf333b;
+    --info: #1898c0;
+    --warning: #bc8c12;
+    --exito-hover: #2d8a46;
+    --error-hover: #962a31;
+    --info-hover: #147fa0;
+    --warning-hover: #9b7512;
+}
+
+.contenedor-toast {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background: #ccc;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    overflow: hidden;
+    animation-name: apertura;
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+    .toast.exito {
+        background: var(--exito);
+    }
+
+    .toast.error {
+        background: var(--error);
+    }
+
+    .toast.info {
+        background: var(--info);
+    }
+
+    .toast.warning {
+        background: var(--warning);
+    }
+
+    .toast .contenido {
+        display: grid;
+        grid-template-columns: 30px auto;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        color: white;
+    }
+
+        .toast .contenido i {
+            font-size: 18px;
+        }
+
+        .toast .contenido p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+    .toast .btn-cerrar {
+        background: rgba(0, 0, 0, 0.1);
+        border: none;
+        cursor: pointer;
+        padding: 0px 10px;
+        transition: 0.3s ease all;
+        color: white;
+        font-size: 16px;
+    }
+
+        .toast .btn-cerrar:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+@keyframes apertura {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.toast.cerrando {
+    animation-name: cierre;
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cierre {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(100% + 40px));
+    }
+}
+
+.toast.autoCierre::after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0;
+    animation-name: autoCierre;
+    animation-duration: 5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes autoCierre {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor-toast {
+        right: 20px;
+        bottom: 20px;
+        max-width: calc(100% - 40px);
+    }
+}
