@@ -1,92 +1,92 @@
 ﻿
 
-using Domain.Entities;
-using Domain.Interface.Repositories;
-using Infraestructure.Context;
-using Infraestructure.Core;
-using Microsoft.EntityFrameworkCore;
-using static Infraestructure.Exeception.NotFoundExeception;
+    using Domain.Entities;
+    using Domain.Interface.Repositories;
+    using Infraestructure.Context;
+    using Infraestructure.Core;
+    using Microsoft.EntityFrameworkCore;
+    using static Infraestructure.Exeception.NotFoundExeception;
 
-namespace Infraestructure.Repositories
-{
-    public class PublicacionRepository : GenericRepository<Publicaciones> , IRepositoryPublicaciones
+    namespace Infraestructure.Repositories
     {
-        public PublicacionRepository(SocialRedContext context) : base(context) { }
-
-
-        public override async Task Add(Publicaciones entity)
-        {
-            if (entity == null)
+            public class PublicacionRepository : GenericRepository<Publicaciones> , IRepositoryPublicaciones
             {
-                throw new ArgumentNullException(nameof(entity), "El usuario no puede ser nulo");
+                public PublicacionRepository(SocialRedContext context) : base(context) { }
+
+
+                public override async Task Add(Publicaciones entity)
+                {
+                    if (entity == null)
+                    {
+                        throw new ArgumentNullException(nameof(entity), "La publicacion no puede ser null");
+                    }
+
+                    await base.Add(entity);
+                }
+
+            public override async Task AddList(List<Publicaciones> entities)
+            {
+                if (entities == null)
+                {
+                    throw new ArgumentNullException(nameof(entities), "Los usuarios agregados no pueden ser nulos");
+                }
+
+                await base.AddList(entities);
             }
 
-            await base.Add(entity);
-        }
-
-        public override async Task AddList(List<Publicaciones> entities)
-        {
-            if (entities == null)
+            public override async Task Delete(int id)
             {
-                throw new ArgumentNullException(nameof(entities), "Los usuarios agregados no pueden ser nulos");
+                var entidad = await GetById(id);
+                if (entidad == null)
+                {
+                    throw new NotFoundException($"el id: {id}, no se a encontrado");
+                }
+                entidad.IsActive = false;
+                _context.Update(entidad);
             }
 
-            await base.AddList(entities);
-        }
 
-        public override async Task Delete(int id)
-        {
-            var entidad = await GetById(id);
-            if (entidad == null)
+            public override async Task<List<Publicaciones>> GetAll()
             {
-                throw new NotFoundException($"el id: {id}, no se a encontrado");
-            }
-            entidad.IsActive = false;
-            _context.Update(entidad);
-        }
+                var user = await _context.Publicaciones.Where(c => c.IsActive).ToListAsync();
+                if (user == null)
+                {
+                    throw new NotFoundException("no hay usuarios activados");
+                }
 
-
-        public override async Task<List<Publicaciones>> GetAll()
-        {
-            var user = await _context.Publicaciones.Where(c => c.IsActive).ToListAsync();
-            if (user == null)
-            {
-                throw new NotFoundException("no hay usuarios activados");
+                return user;
             }
 
-            return user;
-        }
-
-        public override async Task<Publicaciones> GetById(int id)
-        {
-            var user = await base.GetById(id);
-            if (user == null)
+            public override async Task<Publicaciones> GetById(int id)
             {
-                throw new NotFoundException($" el Id: {id}, no se a encontrado");
+                var user = await base.GetById(id);
+                if (user == null)
+                {
+                    throw new NotFoundException($" el Id: {id}, no se a encontrado");
+                }
+
+                return user;
             }
 
-            return user;
-        }
-
-        public override Task Save()
-        {
-            return base.Save();
-        }
-
-        public override async Task Update(Publicaciones entity)
-        {
-            if (entity == null)
+            public override Task Save()
             {
-                throw new ArgumentNullException(nameof(entity), "El usuario no puede ser nulo");
+                return base.Save();
             }
 
-            var existingCliente = await GetById(entity.Id);
-            if (existingCliente == null)
+            public override async Task Update(Publicaciones entity)
             {
-                throw new NotFoundException($"No se puede actualizar el usuario con ID {entity.Id} porque no existe en la base de datos");
-            }
+                if (entity == null)
+                {
+                    throw new ArgumentNullException(nameof(entity), "El usuario no puede ser nulo");
+                }
 
-            await base.Update(entity);
+                var existingCliente = await GetById(entity.Id);
+                if (existingCliente == null)
+                {
+                    throw new NotFoundException($"No se puede actualizar el usuario con ID {entity.Id} porque no existe en la base de datos");
+                }
+
+                await base.Update(entity);
+            }
         }
     }
-}

@@ -127,6 +127,10 @@ namespace Infraestructure.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("PublicacionId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UploadedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -135,13 +139,11 @@ namespace Infraestructure.Migrations
                     b.Property<int>("UploadedByUserId")
                         .HasColumnType("int");
 
-                  
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UploadedByUserId");
+                    b.HasIndex("PublicacionId");
 
-                
+                    b.HasIndex("UploadedByUserId");
 
                     b.ToTable("MediaFiles", (string)null);
                 });
@@ -165,16 +167,6 @@ namespace Infraestructure.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("EnlaceVideo")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("Imagen")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -295,13 +287,21 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.MediaFile", b =>
                 {
-                    b.HasOne("Domain.Entities.User", null)
-                        .WithMany()
+                    b.HasOne("Domain.Entities.Publicaciones", "Publicacion")
+                        .WithMany("PublicacionesMediafile")
+                        .HasForeignKey("PublicacionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.User", "User")
+                        .WithMany("UserMediaFiles")
                         .HasForeignKey("UploadedByUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    
+                    b.Navigation("Publicacion");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Entities.Publicaciones", b =>
@@ -318,6 +318,8 @@ namespace Infraestructure.Migrations
             modelBuilder.Entity("Domain.Entities.Publicaciones", b =>
                 {
                     b.Navigation("Comentarios");
+
+                    b.Navigation("PublicacionesMediafile");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -326,9 +328,9 @@ namespace Infraestructure.Migrations
 
                     b.Navigation("Comentarios");
 
-                    b.Navigation("MediaFiles");
-
                     b.Navigation("Publicaciones");
+
+                    b.Navigation("UserMediaFiles");
                 });
 #pragma warning restore 612, 618
         }

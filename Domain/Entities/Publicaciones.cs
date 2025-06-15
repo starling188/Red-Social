@@ -8,9 +8,10 @@ namespace Domain.Entities
     {
         public int UsuarioID { get; set; }
         public string Contenido { get; set; }
-        public string Imagen { get; set; }
-        public string EnlaceVideo { get; set; }
+       
 
+
+        public ICollection<MediaFile> PublicacionesMediafile { get; set; }  
         public virtual User Usuario { get; set; }
         public virtual ICollection<Comentarios> Comentarios { get; set; }
 

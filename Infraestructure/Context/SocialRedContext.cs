@@ -48,6 +48,11 @@ namespace Infraestructure.Context
                 entity.Property(e => e.EstadoActivacion);
 
                 entity.Property(e => e.FotoPerfil).HasMaxLength(255);
+
+                entity.HasMany(e => e.UserMediaFiles)         // debe ser el nombre EXACTO de la propiedad en User
+                  .WithOne(m => m.User)                    // navegación inversa en MediaFile
+                  .HasForeignKey(m => m.UploadedByUserId) // FK en MediaFile que apunta a User
+                  .OnDelete(DeleteBehavior.Restrict);
             });
 
             #endregion
@@ -58,15 +63,23 @@ namespace Infraestructure.Context
             // Configuración de la entidad Publicaciones
             modelBuilder.Entity<Publicaciones>(entity =>
             {
+                
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
                 entity.Property(e => e.Contenido).HasMaxLength(500);
-                entity.Property(e => e.Imagen).HasMaxLength(255);
-                entity.Property(e => e.EnlaceVideo).HasMaxLength(255);
+              
+
+                entity.HasMany(p => p.PublicacionesMediafile)
+                   .WithOne(m => m.Publicacion)
+                   .HasForeignKey(m => m.PublicacionId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
                 entity.HasOne(e => e.Usuario)
                     .WithMany(u => u.Publicaciones)
                     .HasForeignKey(e => e.UsuarioID)
                     .OnDelete(DeleteBehavior.Restrict);
+
+               
             });
 
             #endregion

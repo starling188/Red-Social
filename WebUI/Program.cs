@@ -4,9 +4,23 @@ using Infraestructure.Extension;
 using Aplication.Extension;
 using Aplication.Dtos;
 
+using WebUI.Middleware;
+using WebUI.Filters;
+
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+// Add services to the container.
+builder.Services.AddControllersWithViews(options =>
+{
+    // Registrar el filtro global para obtener la foto del usuario
+    options.Filters.Add<UserPhotoActionFilter>();
+});
+
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -55,6 +69,11 @@ app.UseRouting();
 
 app.UseAuthentication(); // Debe estar antes de UseAuthorization
 app.UseAuthorization();
+
+
+// IMPORTANTE: Registrar el middleware DESPUÉS de la autenticación
+// pero ANTES de los controladores
+app.UseMiddleware<MiddlewareGetPhoto>();
 
 app.MapControllerRoute(
     name: "default",

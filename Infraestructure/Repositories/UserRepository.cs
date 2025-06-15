@@ -104,13 +104,18 @@ namespace Infraestructure.Repositories
         //Metodo Para tu perfil de usuario
         public async Task<User> GetProfileWithDataAsync(string username)
         {
-            var user = await _context.Users.
-                Include(u => u.UserMediaFiles)
-                .Include(u => u.Publicaciones)
-                .Include(u => u.Amistades).
-                FirstOrDefaultAsync(u => u.UserName == username && u.IsActive);
+            var user = await _context.Users
+               .Include(u => u.UserMediaFiles)
+               .Include(u => u.Publicaciones)
+                   .ThenInclude(p => p.PublicacionesMediafile) // IMPORTANTE: Incluir esta relación
+               .Include(u => u.Amistades)
+               .FirstOrDefaultAsync(u => u.UserName == username && u.IsActive);
 
-            if( user == null)
+            user.Publicaciones = user.Publicaciones
+                .OrderByDescending(p => p.CreatedDate)
+                .ToList();
+
+            if ( user == null)
             {
                 throw new NotFoundException($"no se encontro el usuario con Username:{user}");
 

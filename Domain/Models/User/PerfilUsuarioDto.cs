@@ -1,5 +1,7 @@
 ﻿
 
+using Domain.Models.Publicacion;
+
 namespace Domain.Models.User
 {
     public class PerfilUsuarioDto
@@ -14,5 +16,11 @@ namespace Domain.Models.User
         public int CantidadArchivosMultimedia { get; set; }
 
         public List<string> RutasMultimedia { get; set; } = new List<string>();
+
+
+     
+
+        // NUEVO: Agregar las publicaciones completas para mantener el orden
+        public List<PublicacionPerfilDto> Publicaciones { get; set; } = new List<PublicacionPerfilDto>();
     }
 }

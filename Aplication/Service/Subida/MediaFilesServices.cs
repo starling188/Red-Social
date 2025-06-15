@@ -9,6 +9,7 @@ using Domain.Interface.Repositories;
 using Domain.Models.perfilsmodel;
 using Microsoft.Extensions.Hosting;
 using Domain.Interface.Service.Perfil;
+using Aplication.CloudinaryService;
 
 
 namespace Aplication.Service.Subida
@@ -18,12 +19,14 @@ namespace Aplication.Service.Subida
         private readonly IMapper _map;
         private readonly IRepositoryMediaFile _repo;
         private readonly IHostEnvironment _environment;
+        private readonly CloudinaryServices _cloudinaryService;
 
-        public MediaFilesServices(IRepositoryMediaFile mediaFileRepository, IMapper mapper, IHostEnvironment environment) : base ( mediaFileRepository, mapper)
+        public MediaFilesServices(IRepositoryMediaFile mediaFileRepository, IMapper mapper, IHostEnvironment environment, CloudinaryServices claud) : base ( mediaFileRepository, mapper)
         {
             _repo = mediaFileRepository;
             _map = mapper;
             _environment = environment;
+            _cloudinaryService = claud;
         }
 
         public async Task UploadMediaFileAsync(MediaFileViewModel viewModel)
@@ -35,45 +38,43 @@ namespace Aplication.Service.Subida
             }
 
 
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".mp4", ".avi", ".mov" };
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".mp4", ".avi", ".mov", "mkv" };
             var fileExtension = Path.GetExtension(viewModel.File.FileName).ToLower();
+
 
             if (!allowedExtensions.Contains(fileExtension))
             {
                 throw new ArgumentException("Tipo de archivo no permitido.");
             }
 
-            var uploadsFolder = Path.Combine(_environment.ContentRootPath, "wwwroot", "uploads"); // Ruta dentro de wwwroot/uploads
-            if (!Directory.Exists(uploadsFolder))
-            {
-                Directory.CreateDirectory(uploadsFolder);
-            }// Cambiado a ContentRootPath
+            string fileType = viewModel.File.ContentType.StartsWith("image") ? "image" :
+                      viewModel.File.ContentType.StartsWith("video") ? "video" : "other";
 
-            var fileName = Path.GetFileNameWithoutExtension(viewModel.File.FileName);
-            var uniqueFileName = $"{fileName}_{Guid.NewGuid()}{fileExtension}";
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+            string url = null;
 
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            if (fileType == "image")
             {
-                await viewModel.File.CopyToAsync(fileStream);
+                var uploadResult = await _cloudinaryService.UploadImageAsync(viewModel.File);
+                url = uploadResult.SecureUrl.ToString();
+            }
+            else if (fileType == "video")
+            {
+                var uploadResult = await _cloudinaryService.UploadVideoAsync(viewModel.File);
+                url = uploadResult.SecureUrl.ToString();
+            }
+            else
+            {
+                throw new Exception("Tipo de archivo no soportado por Cloudinary.");
             }
 
-            var mediaFile = _map.Map<MediaFile>(viewModel);
-
-            mediaFile.FileName = uniqueFileName;
-            mediaFile.FilePath = filePath;
-            mediaFile.ContentType = viewModel.File.ContentType;
-            mediaFile.UploadedAt = DateTime.UtcNow;
-            mediaFile.IsActive = true;
-            mediaFile.CreatedBy = "Sistema";
-            mediaFile.UploadedByUserId = viewModel.UserId;
-            
+            var mediafile = _map.Map<MediaFile>(viewModel);
+            mediafile.FilePath = url;
             
 
+
+            await _repo.Add(mediafile);
+
             
-
-            await _repo.Add(mediaFile);
-
         }
 
         public async Task Save()

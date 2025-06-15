@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(SocialRedContext))]
-    [Migration("20240827070121_nullActivartoken")]
-    partial class nullActivartoken
+    [Migration("20250608020817_InitialCreated")]
+    partial class InitialCreated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,6 +96,61 @@ namespace Infraestructure.Migrations
                     b.ToTable("Comentarios");
                 });
 
+            modelBuilder.Entity("Domain.Entities.MediaFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("PublicacionId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UploadedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<int>("UploadedByUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PublicacionId");
+
+                    b.HasIndex("UploadedByUserId");
+
+                    b.ToTable("MediaFiles", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.Publicaciones", b =>
                 {
                     b.Property<int>("Id")
@@ -170,6 +225,10 @@ namespace Infraestructure.Migrations
                     b.Property<bool>("EstadoActivacion")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FotoPerfil")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -194,6 +253,9 @@ namespace Infraestructure.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -236,6 +298,25 @@ namespace Infraestructure.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("Domain.Entities.MediaFile", b =>
+                {
+                    b.HasOne("Domain.Entities.Publicaciones", "Publicacion")
+                        .WithMany("PublicacionesMediafile")
+                        .HasForeignKey("PublicacionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.User", "User")
+                        .WithMany("UserMediaFiles")
+                        .HasForeignKey("UploadedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Publicacion");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Domain.Entities.Publicaciones", b =>
                 {
                     b.HasOne("Domain.Entities.User", "Usuario")
@@ -250,6 +331,8 @@ namespace Infraestructure.Migrations
             modelBuilder.Entity("Domain.Entities.Publicaciones", b =>
                 {
                     b.Navigation("Comentarios");
+
+                    b.Navigation("PublicacionesMediafile");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -259,6 +342,8 @@ namespace Infraestructure.Migrations
                     b.Navigation("Comentarios");
 
                     b.Navigation("Publicaciones");
+
+                    b.Navigation("UserMediaFiles");
                 });
 #pragma warning restore 612, 618
         }

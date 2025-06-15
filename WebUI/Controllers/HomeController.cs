@@ -7,6 +7,8 @@ using Domain.Interface.Service.Perfil;
 using Domain.Models.perfilsmodel;
 using Domain.Interface.Service.user;
 using Domain.Models.User;
+using Domain.Interface.Service.Publication;
+using Domain.Models.Publicacion;
 
 
 
@@ -21,16 +23,19 @@ namespace WebUI.Controllers
 
         private readonly IMediafile _mediafile;
         private readonly IServiceUser _user;
+        private readonly IServicePublicaciones _publicaciones;
 
-        public HomeController(IMediafile med , IServiceUser us)
+
+        public HomeController(IMediafile med , IServiceUser us, IServicePublicaciones pub)
         {
             _mediafile = med;
             _user = us;
+            _publicaciones = pub;
         }
 
         public async Task<IActionResult> Index()
         {
-            await Getphoto();
+            
             return View();
         }
 
@@ -44,23 +49,57 @@ namespace WebUI.Controllers
             return View();
         }
 
-        //for index extend
-        private async Task Getphoto()
+        public IActionResult CrearPublicacion()
         {
-            var username = User.Identity?.Name;
-
-            if (!string.IsNullOrEmpty(username))
-            {
-
-                var usuario = await _user.GetProfDataUser(username);
-                ViewBag.PhotoPerfil = usuario.FotoPerfil;
-            }
+            return View();
         }
+
+
+       
 
 
         //not remove this
 
+        [HttpPost]
+        public async Task<IActionResult> CrearPublicacion(SavePublicacionDto dto)
+        {
 
+            // DEBUG: Agregar logs para verificar qué está llegando
+            Console.WriteLine($"Contenido: {dto?.Contenido}");
+            Console.WriteLine($"UsuarioId: {dto?.UsuarioId}");
+            Console.WriteLine($"Archivos Count: {dto?.Archivos?.Count ?? 0}");
+
+
+            // Debug adicional: verificar Request.Form.Files
+            Console.WriteLine($"Request.Form.Files Count: {Request.Form.Files.Count}");
+            foreach (var file in Request.Form.Files)
+            {
+                Console.WriteLine($"Archivo: {file.Name} - {file.FileName} - Tamaño: {file.Length}");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = "Por favor, completa todos los campos requeridos correctamente.";
+                return View(dto);
+            }
+
+
+            try
+            {
+                await _publicaciones.AddpublicationWithFile(dto);
+                TempData["SuccessMessage"] = "¡Tu publicación se ha compartido exitosamente!";
+                return RedirectToAction("Index", "Home");
+
+            }
+            catch(Exception ex) 
+            {
+                TempData["ErrorMessage"] = "Hubo un error al publicar. Por favor, inténtalo de nuevo.";
+                ModelState.AddModelError("", ex.Message);
+                return View(dto);
+            }
+        }
+
+        //cuando buscamos usuarios este metodo traer su info en lo coloca en una vista generica 
         [HttpGet]
         public async Task<IActionResult> UserProfile(string username)
         {
@@ -82,12 +121,12 @@ namespace WebUI.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.Error = ex.Message;
-                return View("Error");
+                TempData["ErrorMessage"] = "Usuario no encontrado.";
+                return RedirectToAction("Index");
             }
         }
 
-
+        //el buscar usuarios
         [HttpGet]
         public async Task<IActionResult> SearchByUserNames(string username)
         {
@@ -105,11 +144,9 @@ namespace WebUI.Controllers
             }
         }
 
-
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
-
             var username = User.Identity.Name;
 
             if (string.IsNullOrEmpty(username))
@@ -128,32 +165,9 @@ namespace WebUI.Controllers
                 ViewBag.Error = ex.Message;
                 return View("Error");
             }
-
         }
 
-        [HttpPost]
-        public async Task<IActionResult> SubidaFoto(MediaFileViewModel model)
-        {
-            if (!ModelState.IsValid)
-                return View(model);
 
-            try
-            {
-                await _mediafile.UploadMediaFileAsync(model);
-                await _mediafile.Save();
-
-                TempData["Message"] = "Archivo cargado exitosamente.";
-
-                // Redirige al Index solo si se subió correctamente
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                // Manejo de error: se queda en la misma vista
-                ModelState.AddModelError(string.Empty, $"Error al cargar el archivo: {ex.Message}");
-                return View(model);
-            }
-        }
 
         public async Task<IActionResult> Salir()
         {

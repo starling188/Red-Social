@@ -5,6 +5,7 @@ using Domain.Entities;
 using Domain.Interface.EmailService;
 using Domain.Interface.Repositories;
 using Domain.Interface.Service.user;
+using Domain.Models.Publicacion;
 using Domain.Models.User;
 
 namespace Aplication.Service.user
@@ -77,6 +78,19 @@ namespace Aplication.Service.user
             }
 
             var perfil = _map.Map<PerfilUsuarioDto>(user);
+
+            // NUEVO: Mapear las publicaciones manualmente para asegurar el orden correcto
+            perfil.Publicaciones = user.Publicaciones
+                .OrderByDescending(p => p.CreatedDate) // Asegurar orden descendente
+                .Select(p => new PublicacionPerfilDto
+                {
+                    Id = p.Id,
+                    Contenido = p.Contenido,
+                    CreatedDate = p.CreatedDate,
+                    RutasArchivos = p.PublicacionesMediafile?.Select(a => a.FilePath).ToList() ?? new List<string>()
+                })
+                .ToList();
+
             return perfil;
         }
 

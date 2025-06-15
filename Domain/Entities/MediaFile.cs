@@ -11,6 +11,10 @@
             public int UploadedByUserId { get; set; } // Usuario que subió el archivo
             public string FileType { get; set; } // ProfilePhoto, Image, Video
 
+
+
+            public int? PublicacionId { get; set; }
+            public Publicaciones Publicacion { get; set; }
             public User User { get; set; } // Propiedad de navegación para EF
 
         }

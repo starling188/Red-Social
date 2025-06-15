@@ -19,7 +19,7 @@
         <meta property="og:image" content="@Model.FotoPerfil" />
     }
 
-    <link rel="stylesheet" href="/css/Profile/Profile.css" />
+    <link rel="stylesheet" href="/css/Profiles/Profile.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
@@ -46,7 +46,7 @@
                         <img src="@Model.FotoPerfil" alt="Perfil" />
                     }
                     else
-                    {   
+                    {
                         <i class="far fa-user-circle"></i>
                     }
                 </a>
@@ -162,27 +162,61 @@
             </a>
         </div>
 
-        <!-- Galería de archivos multimedia -->
+        <!-- Galería de archivos multimedia USANDO PUBLICACIONES ORDENADAS -->
         <div class="perfil-galeria">
-            @if (Model.RutasMultimedia != null && Model.RutasMultimedia.Any())
+            @if (Model.Publicaciones != null && Model.Publicaciones.Any())
             {
-                @foreach (var ruta in Model.RutasMultimedia)
+                @foreach (var publicacion in Model.Publicaciones)
                 {
-                    <div class="galeria-item">
-                        <img src="@ruta" alt="Archivo" />
-                        @if (ruta.Contains("video") || ruta.EndsWith(".mp4"))
+                    if (publicacion.RutasArchivos != null && publicacion.RutasArchivos.Any())
+                    {
+                        @foreach (var ruta in publicacion.RutasArchivos)
                         {
-                            <div class="item-icon video">
-                                <i class="fas fa-play"></i>
+                            <div class="galeria-item" data-publicacion-id="@publicacion.Id" title="@publicacion.Contenido - @publicacion.CreatedDate.ToString("dd/MM/yyyy HH:mm")">
+                                <img src="@ruta" alt="Publicación" />
+
+                                @if (ruta.Contains("video") || ruta.EndsWith(".mp4"))
+                                {
+                                    <div class="item-icon video">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                }
+
+                                @if (publicacion.RutasArchivos.Count > 1)
+                                {
+                                    <div class="item-icon multiple">
+                                        <i class="far fa-clone"></i>
+                                    </div>
+                                }
+
+                                <!-- Overlay con información -->
+                                <div class="galeria-overlay">
+                                    <div class="overlay-stats">
+                                        <span><i class="fas fa-heart"></i> 0</span>
+                                        <span><i class="fas fa-comment"></i> 0</span>
+                                    </div>
+                                </div>
                             </div>
                         }
-                        @if (ruta.Contains("multi"))
-                        {
-                            <div class="item-icon multiple">
-                                <i class="far fa-clone"></i>
+                    }
+                    else
+                    {
+                        <!-- Publicación solo texto -->
+                        <div class="galeria-item publicacion-texto" data-publicacion-id="@publicacion.Id" title="@publicacion.CreatedDate.ToString("dd/MM/yyyy HH:mm")">
+                            <div class="texto-contenido">
+                                <p>@publicacion.Contenido</p>
+                                <small>@publicacion.CreatedDate.ToString("dd/MM/yyyy")</small>
                             </div>
-                        }
-                    </div>
+
+                            <!-- Overlay con información -->
+                            <div class="galeria-overlay">
+                                <div class="overlay-stats">
+                                    <span><i class="fas fa-heart"></i> 0</span>
+                                    <span><i class="fas fa-comment"></i> 0</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 }
             }
             else
@@ -192,7 +226,7 @@
                     <p>No hay publicaciones aún</p>
                     @if (User.Identity.IsAuthenticated && User.Identity.Name == Model.UserName)
                     {
-                        <a href="/Publicaciones/Crear" class="btn-crear-publicacion">Crear publicación</a>
+                        <a href="@Url.Action("CrearPublicacion", "Home")" class="btn-crear-publicacion">Crear publicación</a>
                     }
                 </div>
             }
@@ -220,18 +254,6 @@
                             <div class="seguidor-nombre">Usuario Ejemplo</div>
                         </div>
                         <button class="btn-seguir small">Seguir</button>
-                    </div>
-                    <div class="seguidor-item">
-                        <div class="seguidor-foto">
-                            <div class="perfil-foto-placeholder">
-                                <span>E</span>
-                            </div>
-                        </div>
-                        <div class="seguidor-info">
-                            <div class="seguidor-username">ejemplo2</div>
-                            <div class="seguidor-nombre">Ejemplo Dos</div>
-                        </div>
-                        <button class="btn-seguir siguiendo small">Siguiendo</button>
                     </div>
                 </div>
             </div>
@@ -284,6 +306,16 @@
                     e.preventDefault();
                     tabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
+                });
+            });
+
+            // Click en publicaciones para ver detalles
+            const galeriaItems = document.querySelectorAll('.galeria-item');
+            galeriaItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const publicacionId = this.getAttribute('data-publicacion-id');
+                    // Aquí puedes agregar lógica para abrir un modal con la publicación completa
+                    console.log('Clicked publicación:', publicacionId);
                 });
             });
         });

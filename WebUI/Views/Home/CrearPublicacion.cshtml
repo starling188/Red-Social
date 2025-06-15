@@ -1,0 +1,301 @@
+﻿@model Domain.Models.Publicacion.SavePublicacionDto
+
+@{
+    ViewData["Title"] = "Crear Publicación";
+
+    var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+    var userId = userIdClaim != null ? int.Parse(userIdClaim.Value) : 0;
+}
+
+<h2>Crear Publicación</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<form asp-action="CrearPublicacion" asp-controller="Home" method="post" enctype="multipart/form-data" id="publicacionForm">
+    <div class="form-group">
+        <label asp-for="Contenido">Contenido</label>
+        <textarea asp-for="Contenido" class="form-control" rows="4" placeholder="¿En qué estás pensando?" id="contenidoInput"></textarea>
+        <span asp-validation-for="Contenido" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <label>Archivos (imágenes o videos)</label>
+        <div class="d-flex gap-2 mb-2">
+            <button type="button" class="btn btn-outline-primary" id="addFilesBtn">
+                <i class="fas fa-plus"></i> Agregar Archivos
+            </button>
+            <button type="button" class="btn btn-outline-danger" id="clearAllBtn" style="display: none;">
+                <i class="fas fa-trash"></i> Limpiar Todo
+            </button>
+        </div>
+        <!-- Input oculto para seleccionar archivos -->
+        <input type="file" id="fileSelector" multiple class="d-none" accept="image/*,video/*" />
+    </div>
+
+    <div id="preview" class="mt-3 d-flex flex-wrap gap-2"></div>
+    <p id="file-count" class="mt-2 text-muted">0 archivo(s) seleccionado(s).</p>
+
+    <input type="hidden" name="UsuarioId" value="@userId" id="usuarioIdInput" />
+
+    <button type="submit" class="btn btn-primary mt-3">Publicar</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Modelo JavaScript para manejar la publicación
+        class PublicacionModel {
+            constructor() {
+                this.contenido = '';
+                this.usuarioId = @userId;
+                this.archivos = new Map(); // Usar Map para evitar duplicados
+                this.archivoCounter = 0; // Contador para IDs únicos
+            }
+
+            // Agregar archivo al modelo
+            addArchivo(file) {
+                const archivoId = `archivo_${this.archivoCounter++}_${Date.now()}`;
+                const archivoData = {
+                    id: archivoId,
+                    file: file,
+                    name: file.name,
+                    size: file.size,
+                    type: file.type,
+                    lastModified: file.lastModified
+                };
+
+                this.archivos.set(archivoId, archivoData);
+                return archivoId;
+            }
+
+            // Eliminar archivo del modelo
+            removeArchivo(archivoId) {
+                return this.archivos.delete(archivoId);
+            }
+
+            // Limpiar todos los archivos
+            clearArchivos() {
+                this.archivos.clear();
+            }
+
+            // Obtener cantidad de archivos
+            getArchivosCount() {
+                return this.archivos.size;
+            }
+
+            // Obtener todos los archivos como array
+            getArchivosArray() {
+                return Array.from(this.archivos.values()).map(item => item.file);
+            }
+
+            // Actualizar contenido
+            updateContenido(contenido) {
+                this.contenido = contenido;
+            }
+        }
+
+        // Gestor de la interfaz
+        class PublicacionManager {
+            constructor() {
+                this.model = new PublicacionModel();
+                this.initElements();
+                this.initEventListeners();
+            }
+
+            initElements() {
+                this.form = document.getElementById('publicacionForm');
+                this.fileSelector = document.getElementById('fileSelector');
+                this.addFilesBtn = document.getElementById('addFilesBtn');
+                this.clearAllBtn = document.getElementById('clearAllBtn');
+                this.preview = document.getElementById('preview');
+                this.fileCount = document.getElementById('file-count');
+                this.contenidoInput = document.getElementById('contenidoInput');
+            }
+
+            initEventListeners() {
+                // Botón para agregar archivos
+                this.addFilesBtn.addEventListener('click', () => {
+                    this.fileSelector.click();
+                });
+
+                // Cuando se seleccionan archivos
+                this.fileSelector.addEventListener('change', (e) => {
+                    this.handleFileSelection(Array.from(e.target.files));
+                    e.target.value = ''; // Limpiar input para permitir seleccionar los mismos archivos
+                });
+
+                // Botón para limpiar todos los archivos
+                this.clearAllBtn.addEventListener('click', () => {
+                    this.clearAllFiles();
+                });
+
+                // Al enviar el formulario
+                this.form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.submitForm();
+                });
+
+                // Actualizar contenido en el modelo
+                this.contenidoInput.addEventListener('input', (e) => {
+                    this.model.updateContenido(e.target.value);
+                });
+            }
+
+            handleFileSelection(files) {
+                files.forEach(file => {
+                    const archivoId = this.model.addArchivo(file);
+                    this.createPreviewElement(file, archivoId);
+                });
+                this.updateUI();
+            }
+
+            createPreviewElement(file, archivoId) {
+                const container = document.createElement('div');
+                container.className = 'position-relative border rounded p-2';
+                container.style.width = '200px';
+                container.setAttribute('data-archivo-id', archivoId);
+
+                // Botón para eliminar archivo
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'btn btn-danger btn-sm position-absolute';
+                removeBtn.style.top = '5px';
+                removeBtn.style.right = '5px';
+                removeBtn.style.zIndex = '10';
+                removeBtn.innerHTML = '×';
+                removeBtn.addEventListener('click', () => {
+                    this.removeFile(archivoId);
+                });
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    let element;
+
+                    if (file.type.startsWith("image")) {
+                        element = document.createElement("img");
+                        element.src = e.target.result;
+                        element.className = "img-fluid rounded";
+                        element.style.width = "100%";
+                        element.style.height = "150px";
+                        element.style.objectFit = "cover";
+                    } else if (file.type.startsWith("video")) {
+                        element = document.createElement("video");
+                        element.src = e.target.result;
+                        element.controls = true;
+                        element.className = "rounded";
+                        element.style.width = "100%";
+                        element.style.height = "150px";
+                        element.style.objectFit = "cover";
+                    } else {
+                        element = document.createElement("div");
+                        element.className = "d-flex align-items-center justify-content-center bg-light rounded";
+                        element.style.width = "100%";
+                        element.style.height = "150px";
+                        element.innerHTML = `<div class="text-center"><i class="fas fa-file fa-2x mb-2"></i><br><small>${file.name}</small></div>`;
+                    }
+
+                    // Información del archivo
+                    const fileInfo = document.createElement('div');
+                    fileInfo.className = 'mt-2 text-center';
+                    fileInfo.innerHTML = `
+                        <small class="text-muted">
+                            ${file.name}<br>
+                            ${this.formatFileSize(file.size)}
+                        </small>
+                    `;
+
+                    container.appendChild(removeBtn);
+                    container.appendChild(element);
+                    container.appendChild(fileInfo);
+                };
+
+                reader.readAsDataURL(file);
+                this.preview.appendChild(container);
+            }
+
+            removeFile(archivoId) {
+                this.model.removeArchivo(archivoId);
+                const element = this.preview.querySelector(`[data-archivo-id="${archivoId}"]`);
+                if (element) {
+                    element.remove();
+                }
+                this.updateUI();
+            }
+
+            clearAllFiles() {
+                this.model.clearArchivos();
+                this.preview.innerHTML = '';
+                this.updateUI();
+            }
+
+            updateUI() {
+                const count = this.model.getArchivosCount();
+                this.fileCount.textContent = `${count} archivo(s) seleccionado(s).`;
+                this.clearAllBtn.style.display = count > 0 ? 'block' : 'none';
+            }
+
+            formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // Función principal para enviar el formulario
+            async submitForm() {
+                try {
+                    // Actualizar el contenido del modelo
+                    this.model.updateContenido(this.contenidoInput.value);
+
+                    // Crear FormData para enviar al servidor
+                    const formData = new FormData();
+
+                    // Agregar contenido y usuario ID
+                    formData.append('Contenido', this.model.contenido);
+                    formData.append('UsuarioId', this.model.usuarioId);
+
+                    // Agregar todos los archivos
+                    const archivos = this.model.getArchivosArray();
+                    archivos.forEach(file => {
+                        formData.append('Archivos', file);
+                    });
+
+                    // Debug: Mostrar lo que se va a enviar
+                    console.log('Enviando:');
+                    console.log('Contenido:', this.model.contenido);
+                    console.log('UsuarioId:', this.model.usuarioId);
+                    console.log('Archivos count:', archivos.length);
+
+                    // Enviar usando fetch
+                    const response = await fetch(this.form.action, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        // Redirigir si es exitoso
+                        window.location.href = response.url || '/Home';
+                    } else {
+                        throw new Error('Error en la respuesta del servidor');
+                    }
+
+                } catch (error) {
+                    console.error('Error al enviar formulario:', error);
+                    alert('Hubo un error al publicar. Por favor, inténtalo de nuevo.');
+                }
+            }
+        }
+
+        // Inicializar cuando se carga la página
+        document.addEventListener('DOMContentLoaded', () => {
+            window.publicacionManager = new PublicacionManager();
+        });
+    </script>
+}
