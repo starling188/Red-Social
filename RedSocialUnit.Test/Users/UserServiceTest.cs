@@ -1,8 +1,9 @@
 ﻿using Aplication.Service.user;
 using Aplication.ValidationAcount;
 using AutoMapper;
-using Aplication.Interface.EmailServices;
+
 using Domain.Interface.Repositories;
+using Aplication.Interface.EmailServices;
 
 namespace RedSocialUnit.Test.Users
 {
@@ -12,7 +13,7 @@ namespace RedSocialUnit.Test.Users
         private readonly IRepositoryUser _userRepoMock;
         private readonly IMapper _mapperMock;
         private readonly IRepositoryLogin _loginRepoMock;
-        private readonly EmailService _emailServiceMock;
+        private readonly IEmailService _emailServiceMock;
         private readonly TokenService _tokenServiceMock;
         private readonly UserServices _userService;
 

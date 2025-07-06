@@ -1,9 +1,9 @@
 ﻿
 
-using Aplication.CloudinaryService;
+
 
 using Aplication.Core;
-using Aplication.Service.Subida;
+
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interface.Repositories;
@@ -11,6 +11,7 @@ using Aplication.Interface.Perfil;
 using Aplication.Interface.Publication;
 using Aplication.Dtos.perfilsmodel;
 using Aplication.Dtos.Publicacion;
+using Aplication.Interface.Cloudinary;
 
 namespace Aplication.Service.publicacion
 {
@@ -18,14 +19,14 @@ namespace Aplication.Service.publicacion
     {
         private readonly IRepositoryPublicaciones _publicacionRepo;
         private readonly IMediafile _mediaFileService;
-        private readonly CloudinaryServices _cloudinaryService;
+        private readonly IClaudinaryUpload _cloudinaryService;
         private readonly IMapper _mapper;
 
 
         public PublicacionesService(
        IRepositoryPublicaciones publicacionRepo,
                               IMediafile mediaFileService,
-                              CloudinaryServices cloudinaryService,
+                              IClaudinaryUpload cloudinaryService,
                               IMapper mapper) : base (publicacionRepo, mapper)
         {
             _publicacionRepo = publicacionRepo;

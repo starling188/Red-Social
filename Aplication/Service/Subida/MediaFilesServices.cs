@@ -9,7 +9,8 @@ using Domain.Interface.Repositories;
 using Aplication.Dtos.perfilsmodel;
 using Microsoft.Extensions.Hosting;
 using Aplication.Interface.Perfil;
-using Aplication.CloudinaryService;
+using Aplication.Interface.Cloudinary;
+
 
 
 namespace Aplication.Service.Subida
@@ -19,9 +20,9 @@ namespace Aplication.Service.Subida
         private readonly IMapper _map;
         private readonly IRepositoryMediaFile _repo;
         private readonly IHostEnvironment _environment;
-        private readonly CloudinaryServices _cloudinaryService;
+        private readonly IClaudinaryUpload _cloudinaryService;
 
-        public MediaFilesServices(IRepositoryMediaFile mediaFileRepository, IMapper mapper, IHostEnvironment environment, CloudinaryServices claud) : base ( mediaFileRepository, mapper)
+        public MediaFilesServices(IRepositoryMediaFile mediaFileRepository, IMapper mapper, IHostEnvironment environment, IClaudinaryUpload claud) : base ( mediaFileRepository, mapper)
         {
             _repo = mediaFileRepository;
             _map = mapper;

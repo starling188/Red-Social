@@ -1,14 +1,14 @@
 ﻿
+using Aplication.Dtos.Cloudinary;
+using Aplication.Interface.Cloudinary;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
-using Aplication.Dtos.Cloudinary;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace Aplication.CloudinaryService
+namespace Infraestructure.CloudinaryService
 {
-    public class CloudinaryServices
+    public class CloudinaryServices : IClaudinaryUpload
     {
         private readonly Cloudinary _cloudinary;
 

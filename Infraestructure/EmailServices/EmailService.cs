@@ -3,8 +3,9 @@ using MimeKit;
 using Microsoft.Extensions.Configuration;
 
 using MailKit.Security;
+using Aplication.Interface.EmailServices;
 
-namespace Aplication.Interface.EmailServices
+namespace Infraestructure.EmailServices
 {
     public class EmailService : IEmailService
     {
