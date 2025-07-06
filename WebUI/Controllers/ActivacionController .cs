@@ -1,12 +1,13 @@
-﻿using Aplication.ValidationAcount;
+﻿using Aplication.Interface.ValidacionService;
+using Aplication.ValidationAcount;
 
 using Microsoft.AspNetCore.Mvc;
 
 public class ActivacionController : Controller
 {
-    private readonly ValidacionActivarAccount _val;
+    private readonly IValidationAccount _val;
 
-    public ActivacionController(ValidacionActivarAccount userService)
+    public ActivacionController(IValidationAccount userService)
     {
         _val = userService;
     }

@@ -1,11 +1,12 @@
 ﻿
 
+using Aplication.Interface.ValidacionService;
 using Domain.Entities;
 using Domain.Interface.Repositories;
 
 namespace Aplication.ValidationAcount
 {
-    public class ValidacionActivarAccount
+    public class ValidacionActivarAccount : IValidationAccount
     {
         private readonly IRepositoryUser _UserRepo;
 

@@ -18,6 +18,7 @@ using Aplication.Interface.Publication;
 
 
 using Aplication.Interface.Perfil;
+using Aplication.Interface.ValidacionService;
 
 
 
@@ -35,7 +36,7 @@ namespace Aplication.Extension
             //services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IMediafile, MediaFilesServices>();
             services.AddTransient<IServicePublicaciones, PublicacionesService>();
-
+            services.AddTransient<IValidationAccount, ValidacionActivarAccount>();
 
 
 
