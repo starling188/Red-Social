@@ -1,21 +1,26 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Aplication.ValidationAcount;
-using Domain.Interface.EmailService;
-using Domain.Interface.Service.user;
-using Domain.Interface.Service.login;
+
+using Aplication.Interface.user;
+using Aplication.Interface.login;
+
 using Aplication.Service.login;
 using Aplication.Service.user;
 using Aplication.CloudinaryService;
-
-
-
-using Domain.Interface.Service.Perfil;
 using Aplication.Service.Subida;
-using Domain.Interface.Service.Publication;
 using Aplication.Service.publicacion;
+
+
+
+using Aplication.Interface.EmailServices;
+
+using Aplication.Interface.Publication;
+
 using CloudinaryDotNet;
-using Domain.Models.Cloudinary;
+using Aplication.Dtos.Cloudinary;
+using Aplication.Interface.Perfil;
+
 
 
 

@@ -6,9 +6,9 @@ using Aplication.Core;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interface.Repositories;
-using Domain.Models.perfilsmodel;
+using Aplication.Dtos.perfilsmodel;
 using Microsoft.Extensions.Hosting;
-using Domain.Interface.Service.Perfil;
+using Aplication.Interface.Perfil;
 using Aplication.CloudinaryService;
 
 

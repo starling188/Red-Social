@@ -2,7 +2,7 @@
 
     using Microsoft.AspNetCore.Http;
 
-    namespace Domain.Models.perfilsmodel
+    namespace Aplication.Dtos.perfilsmodel
     {
         public class MediaFileViewModel
         {

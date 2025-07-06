@@ -2,11 +2,11 @@
 using Aplication.ValidationAcount;
 using AutoMapper;
 using Domain.Entities;
-using Domain.Interface.EmailService;
+using Aplication.Interface.EmailServices;
 using Domain.Interface.Repositories;
-using Domain.Interface.Service.user;
-using Domain.Models.Publicacion;
-using Domain.Models.User;
+using Aplication.Interface.user;
+using Aplication.Dtos.Publicacion;
+using Aplication.Dtos.users;
 
 namespace Aplication.Service.user
 {

@@ -1,6 +1,6 @@
 ﻿
 
-namespace Domain.Models.Cloudinary
+namespace Aplication.Dtos.Cloudinary
 {
     public class CloudinarySettings
     {

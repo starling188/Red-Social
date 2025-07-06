@@ -1,4 +1,4 @@
-﻿namespace Domain.Models.Publicacion
+﻿namespace Aplication.Dtos.Publicacion
 {
     public class PublicacionPerfilDto
     {

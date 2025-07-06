@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models.Publicacion
+namespace Aplication.Dtos.Publicacion
 {
     public class SavePublicacionDto
     {

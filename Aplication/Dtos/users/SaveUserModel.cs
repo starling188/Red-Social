@@ -2,7 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models.User
+namespace Aplication.Dtos.users
 {
     public class SaveUserModel
     {

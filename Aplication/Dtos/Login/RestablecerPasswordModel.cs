@@ -1,8 +1,9 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models.Login
-{
+namespace Aplication.Dtos.Login 
+{ 
+
     public class RestablecerPasswordModel
     {
         [Required(ErrorMessage = "El nombre de usuario es obligatorio.")]

@@ -2,7 +2,7 @@
 
 using AutoMapper;
 using Domain.Interface.Repositories;
-using Domain.Interface.Service;
+using Aplication.Interface;
 
 namespace Aplication.Core
 {

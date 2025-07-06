@@ -1,5 +1,6 @@
 .vs/My Red Social/FileContentIndex/
 /WebUI/appsettings.json
+*.csproj.user
 
 # Archivos de compilación
 # Ignorar las carpetas bin y obj en todos los proyectos de la solución

@@ -1,8 +1,8 @@
 ﻿
 using Domain.Entities;
-using Domain.Models.Publicacion;
+using Aplication.Dtos.Publicacion;
 
-namespace Domain.Interface.Service.Publication
+namespace Aplication.Interface.Publication
 {
     public interface IServicePublicaciones : IGenericService<SavePublicacionDto, Publicaciones>
     {

@@ -1,10 +1,10 @@
 ﻿
 
 using Domain.Entities;
-using Domain.Models.perfilsmodel;
+using Aplication.Dtos.perfilsmodel;
 
 
-namespace Domain.Interface.Service.Perfil
+namespace Aplication.Interface.Perfil
 {
     public interface IMediafile : IGenericService<MediaFileViewModel, MediaFile>
     {

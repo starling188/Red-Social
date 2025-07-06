@@ -1,8 +1,8 @@
-﻿using Domain.Interface.Service.login;
-using Domain.Interface.Service.user;
-using Domain.Models;
-using Domain.Models.Login;
-using Domain.Models.User;
+﻿using Aplication.Interface.login;
+using Aplication.Interface.user;
+
+using Aplication.Dtos.Login;
+using Aplication.Dtos.users;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;

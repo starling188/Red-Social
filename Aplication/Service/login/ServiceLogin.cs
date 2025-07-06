@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Domain.Interface.Repositories;
-using Domain.Interface.Service.login;
-using Domain.Models;
+using Aplication.Dtos.Login;
+using Aplication.Interface.login;
 
 
 namespace Aplication.Service.login

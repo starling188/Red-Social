@@ -7,10 +7,10 @@ using Aplication.Service.Subida;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interface.Repositories;
-using Domain.Interface.Service.Perfil;
-using Domain.Interface.Service.Publication;
-using Domain.Models.perfilsmodel;
-using Domain.Models.Publicacion;
+using Aplication.Interface.Perfil;
+using Aplication.Interface.Publication;
+using Aplication.Dtos.perfilsmodel;
+using Aplication.Dtos.Publicacion;
 
 namespace Aplication.Service.publicacion
 {

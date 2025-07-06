@@ -1,7 +1,7 @@
 ﻿using Aplication.Service.user;
 using Aplication.ValidationAcount;
 using AutoMapper;
-using Domain.Interface.EmailService;
+using Aplication.Interface.EmailServices;
 using Domain.Interface.Repositories;
 
 namespace RedSocialUnit.Test.Users

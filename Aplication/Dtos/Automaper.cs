@@ -1,10 +1,10 @@
 ﻿
 using AutoMapper;
 using Domain.Entities;
-using Domain.Models.User;
-using Domain.Models;
-using Domain.Models.perfilsmodel;
-using Domain.Models.Publicacion;
+using Aplication.Dtos.users;
+using Aplication.Dtos.Login;
+using Aplication.Dtos.perfilsmodel;
+using Aplication.Dtos.Publicacion;
 
 
 namespace Aplication.Dtos

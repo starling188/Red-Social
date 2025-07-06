@@ -1,6 +1,6 @@
 ﻿
 
-namespace Domain.Interface.EmailService
+namespace Aplication.Interface.EmailServices
 {
     public interface IEmailService
     {

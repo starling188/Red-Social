@@ -1,5 +1,5 @@
 ﻿
-using Domain.Interface.Service.user;
+using Aplication.Interface.user;
 
 namespace WebUI.Middleware
 {

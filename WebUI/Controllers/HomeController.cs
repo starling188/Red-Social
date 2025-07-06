@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-using Domain.Interface.Service.Perfil;
-using Domain.Models.perfilsmodel;
-using Domain.Interface.Service.user;
-using Domain.Models.User;
-using Domain.Interface.Service.Publication;
-using Domain.Models.Publicacion;
+using Aplication.Interface.Perfil;
+
+using Aplication.Interface.user;
+using Aplication.Dtos.users;
+using Aplication.Interface.Publication;
+using Aplication.Dtos.Publicacion;
 
 
 
@@ -99,6 +99,8 @@ namespace WebUI.Controllers
             }
         }
 
+
+        #region metodos get
         //cuando buscamos usuarios este metodo traer su info en lo coloca en una vista generica 
         [HttpGet]
         public async Task<IActionResult> UserProfile(string username)
@@ -167,7 +169,7 @@ namespace WebUI.Controllers
             }
         }
 
-
+        #endregion
 
         public async Task<IActionResult> Salir()
         {

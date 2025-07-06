@@ -1,8 +1,9 @@
 ﻿
 
-using Domain.Models.Publicacion;
 
-namespace Domain.Models.User
+using Aplication.Dtos.Publicacion;
+
+namespace Aplication.Dtos.users
 {
     public class PerfilUsuarioDto
     {

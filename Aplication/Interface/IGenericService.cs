@@ -1,6 +1,6 @@
 ﻿
 
-namespace Domain.Interface.Service
+namespace Aplication.Interface
 {
     public interface IGenericService <TModel, TEntity> where TEntity  : class
     {

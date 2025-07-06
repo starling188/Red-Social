@@ -1,5 +1,5 @@
 ﻿using Aplication.ValidationAcount;
-using Domain.Interface.Service;
+
 using Microsoft.AspNetCore.Mvc;
 
 public class ActivacionController : Controller

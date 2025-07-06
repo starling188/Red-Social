@@ -1,7 +1,8 @@
 ﻿using Domain.Entities;
-using Domain.Models;
+using Aplication.Dtos.Login;
 
-namespace Domain.Interface.Service.login
+
+namespace Aplication.Interface.login
 {
     public interface IServiceLogin
     {

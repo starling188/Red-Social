@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
-using Domain.Models.User;
+using Aplication.Dtos.users;
 
-namespace Domain.Interface.Service.user
+namespace Aplication.Interface.user
 {
     public interface IServiceUser : IGenericService<SaveUserModel, User>
     {
