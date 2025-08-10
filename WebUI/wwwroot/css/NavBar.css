@@ -1,0 +1,108 @@
+﻿/* Sidebar Styles */
+.sidebar {
+    background-color: #000;
+    width: 200px;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+    .sidebar.hidden {
+        transform: translateX(-100%);
+    }
+
+    .sidebar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        
+    }
+
+        .sidebar ul li {
+            margin-bottom: 35px;
+          
+        }
+
+            .sidebar ul li a {
+                color: #fff;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                border-radius: 8px;
+                transition: background-color 0.2s ease;
+                
+            }
+
+                .sidebar ul li a:hover {
+                    background-color: #333;
+                }
+
+                .sidebar ul li a i {
+                    margin-right: 10px;
+                    width: 20px;
+                }
+
+                .sidebar ul li a span {
+                    transition: opacity 0.3s ease;
+                }
+
+/* Toggle button */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+    .sidebar-toggle:hover {
+        background-color: #0056b3;
+    }
+
+    .sidebar-toggle.sidebar-open {
+        left: 220px;
+    }
+
+/* Overlay for mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+/* Responsive sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        transform: translateX(-100%);
+    }
+
+        .sidebar.visible {
+            transform: translateX(0);
+        }
+
+    .sidebar-toggle.sidebar-open {
+        left: 20px;
+    }
+}

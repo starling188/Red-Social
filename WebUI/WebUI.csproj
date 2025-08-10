@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <None Include="Views\Activacion\ActivacionExitoso.cshtml" />
+    <None Include="wwwroot\css\CreatePost\create-post.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\css\NavSide\" />
     <Folder Include="wwwroot\css\Publications\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\uploads\" />

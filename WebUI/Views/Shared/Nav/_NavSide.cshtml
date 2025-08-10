@@ -1,0 +1,32 @@
+﻿ <div class="wrapper">
+        <!-- Barra lateral de navegación -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#">
+                    
+                    <a asp-action="Index" asp-controller="Home">
+                        <i class="fas fa-home"></i> <span>Inicio</span>
+                    </a>
+
+                </a></li>
+                <li><a href="#" id="searchButton"><i class="fas fa-search"></i> <span>Buscar</span></a></li>
+                <li><a href="#"><i class="fas fa-compass"></i> <span>Explorar</span></a></li>
+                <li><a href="#"><i class="fas fa-paper-plane"></i> <span>Mensajes</span></a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> <span>Notificaciones</span></a></li>
+                <li>
+                    <a asp-action="CrearPublicacion" asp-controller="Home">
+                        <i class="fas fa-plus-square"></i> <span>Crear</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="Profile" asp-controller="Home">
+                        <i class="fas fa-user-circle"></i> <span>Perfil</span>
+                    </a>
+                </li>
+                <li><a href="#"><i class="fas fa-cog"></i> <span>Configuración</span></a></li>
+
+                <li><a href="@Url.Action("Salir","Home")"><i class="fas fa-sign-out-alt"></i> <span>Cerrar sesión</span></a></li>
+            </ul>
+        </nav>
+
+ </div>

@@ -1,53 +1,183 @@
 ﻿@model Aplication.Dtos.Publicacion.SavePublicacionDto
-
 @{
     ViewData["Title"] = "Crear Publicación";
-
     var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
     var userId = userIdClaim != null ? int.Parse(userIdClaim.Value) : 0;
+    Layout = null;
 }
 
-<h2>Crear Publicación</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Red Social</title>
 
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-danger">
-        @TempData["ErrorMessage"]
-    </div>
-}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<form asp-action="CrearPublicacion" asp-controller="Home" method="post" enctype="multipart/form-data" id="publicacionForm">
-    <div class="form-group">
-        <label asp-for="Contenido">Contenido</label>
-        <textarea asp-for="Contenido" class="form-control" rows="4" placeholder="¿En qué estás pensando?" id="contenidoInput"></textarea>
-        <span asp-validation-for="Contenido" class="text-danger"></span>
-    </div>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <div class="form-group mt-3">
-        <label>Archivos (imágenes o videos)</label>
-        <div class="d-flex gap-2 mb-2">
-            <button type="button" class="btn btn-outline-primary" id="addFilesBtn">
-                <i class="fas fa-plus"></i> Agregar Archivos
-            </button>
-            <button type="button" class="btn btn-outline-danger" id="clearAllBtn" style="display: none;">
-                <i class="fas fa-trash"></i> Limpiar Todo
-            </button>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="~/css/navbar.css">
+    <link rel="stylesheet" href="~/css/HomeIndex/InicioWeb.css">
+    <link rel="stylesheet" href="~/css/CreatePost/create-post.css">
+    <link rel="stylesheet" href="~/css/alerts.css">
+    <link rel="stylesheet" href="~/css/Search/search-modal.css">
+</head>
+<body>
+    <!-- Contenedor de alertas -->
+    @Html.Partial("Alertas/_Alerts")
+
+    <!-- Incluir el modal de búsqueda -->
+    @Html.Partial("Buscar/_SearchModal")
+
+    <div class="wrapper">
+        <!-- Barra lateral de navegación -->
+        @Html.Partial("Nav/_NavSide")
+
+        <!-- Contenido Principal -->
+        <div class="main-content">
+            <!-- Barra superior con foto de perfil -->
+            <div class="top-bar">
+                <div class="profile-info">
+                    @if (!string.IsNullOrEmpty(ViewBag.PhotoPerfil))
+                    {
+                        <img src="@ViewBag.PhotoPerfil" alt="User" class="profile-picture">
+                    }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/40" alt="User" class="profile-picture">
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span class="username">@User.Identity.Name</span>
+                    }
+                    else
+                    {
+                        <span class="username">Invitado</span>
+                    }
+                </div>
+            </div>
+
+            <!-- Contenedor principal de crear publicación -->
+            <div class="create-post-container">
+                <!-- Header -->
+                <div class="create-post-header">
+                    <a href="@Url.Action("Index", "Home")" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        Volver
+                    </a>
+                    <h1 class="create-post-title">Nueva publicación</h1>
+                    <div></div> <!-- Spacer -->
+                </div>
+
+                <!-- Mensaje de error -->
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
+
+                <!-- Formulario -->
+                <form asp-action="CrearPublicacion" asp-controller="Home" method="post" enctype="multipart/form-data" id="publicacionForm">
+                    <div class="create-post-body">
+                        <!-- Información del usuario -->
+                        <div class="user-info">
+                            @if (!string.IsNullOrEmpty(ViewBag.PhotoPerfil))
+                            {
+                                <img src="@ViewBag.PhotoPerfil" alt="User" class="user-avatar">
+                            }
+                            else
+                            {
+                                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                            }
+                            <div class="username-display">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    @User.Identity.Name
+                                }
+                                else
+                                {
+                                    <span>Invitado</span>
+                                }
+                            </div>
+                        </div>
+
+                        <!-- Área de contenido -->
+                        <div class="content-area">
+                            <textarea asp-for="Contenido"
+                                      class="content-input"
+                                      placeholder="¿Qué quieres compartir?"
+                                      id="contenidoInput"></textarea>
+                            <span asp-validation-for="Contenido" class="text-danger"></span>
+                        </div>
+
+                        <!-- Sección de medios -->
+                        <div class="media-section">
+                            <div class="media-controls">
+                                <button type="button" class="media-btn" id="addFilesBtn">
+                                    <i class="fas fa-image"></i>
+                                    Foto/Video
+                                </button>
+                                <button type="button" class="media-btn danger" id="clearAllBtn" style="display: none;">
+                                    <i class="fas fa-trash"></i>
+                                    Limpiar
+                                </button>
+                            </div>
+
+                            <!-- Input oculto para seleccionar archivos -->
+                            <input type="file" id="fileSelector" multiple class="d-none" accept="image/*,video/*" />
+
+                            <!-- Preview de archivos -->
+                            <div id="preview" class="media-preview"></div>
+
+                            <!-- Contador de archivos -->
+                            <p id="file-count" class="file-counter">0 archivo(s) seleccionado(s)</p>
+                        </div>
+                    </div>
+
+                    <!-- Footer con botón de publicar -->
+                    <div class="create-post-footer">
+                        <input type="hidden" name="UsuarioId" value="@userId" id="usuarioIdInput" />
+                        <button type="submit" class="publish-btn" id="publishBtn">
+                            <i class="fas fa-share"></i>
+                            Compartir
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <!-- Input oculto para seleccionar archivos -->
-        <input type="file" id="fileSelector" multiple class="d-none" accept="image/*,video/*" />
     </div>
 
-    <div id="preview" class="mt-3 d-flex flex-wrap gap-2"></div>
-    <p id="file-count" class="mt-2 text-muted">0 archivo(s) seleccionado(s).</p>
+    <!-- Scripts -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="~/js/sidebar-controller.js"></script>
+    <script src="~/js/search-modal.js"></script>
 
-    <input type="hidden" name="UsuarioId" value="@userId" id="usuarioIdInput" />
 
-    <button type="submit" class="btn btn-primary mt-3">Publicar</button>
-</form>
+  
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <!-- Script para las alertas -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                setTimeout(() => {
+                    alert.classList.add('fade-out');
+                    setTimeout(() => {
+                        alert.remove();
+                    }, 500);
+                }, 5000);
+            });
+        });
+    </script>
 
+    <!-- Script principal de la publicación (mejorado) -->
     <script>
         // Modelo JavaScript para manejar la publicación
         class PublicacionModel {
@@ -69,7 +199,6 @@
                     type: file.type,
                     lastModified: file.lastModified
                 };
-
                 this.archivos.set(archivoId, archivoData);
                 return archivoId;
             }
@@ -157,17 +286,13 @@
 
             createPreviewElement(file, archivoId) {
                 const container = document.createElement('div');
-                container.className = 'position-relative border rounded p-2';
-                container.style.width = '200px';
+                container.className = 'media-item';
                 container.setAttribute('data-archivo-id', archivoId);
 
                 // Botón para eliminar archivo
                 const removeBtn = document.createElement('button');
                 removeBtn.type = 'button';
-                removeBtn.className = 'btn btn-danger btn-sm position-absolute';
-                removeBtn.style.top = '5px';
-                removeBtn.style.right = '5px';
-                removeBtn.style.zIndex = '10';
+                removeBtn.className = 'remove-media';
                 removeBtn.innerHTML = '×';
                 removeBtn.addEventListener('click', () => {
                     this.removeFile(archivoId);
@@ -176,46 +301,35 @@
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     let element;
-
                     if (file.type.startsWith("image")) {
                         element = document.createElement("img");
                         element.src = e.target.result;
-                        element.className = "img-fluid rounded";
-                        element.style.width = "100%";
-                        element.style.height = "150px";
-                        element.style.objectFit = "cover";
+                        element.alt = file.name;
                     } else if (file.type.startsWith("video")) {
                         element = document.createElement("video");
                         element.src = e.target.result;
                         element.controls = true;
-                        element.className = "rounded";
-                        element.style.width = "100%";
-                        element.style.height = "150px";
-                        element.style.objectFit = "cover";
+                        element.muted = true;
                     } else {
                         element = document.createElement("div");
-                        element.className = "d-flex align-items-center justify-content-center bg-light rounded";
-                        element.style.width = "100%";
-                        element.style.height = "150px";
-                        element.innerHTML = `<div class="text-center"><i class="fas fa-file fa-2x mb-2"></i><br><small>${file.name}</small></div>`;
+                        element.className = "file-placeholder";
+                        element.innerHTML = `<i class="fas fa-file"></i><span>${file.name}</span>`;
                     }
 
                     // Información del archivo
                     const fileInfo = document.createElement('div');
-                    fileInfo.className = 'mt-2 text-center';
+                    fileInfo.className = 'file-info';
                     fileInfo.innerHTML = `
-                        <small class="text-muted">
-                            ${file.name}<br>
-                            ${this.formatFileSize(file.size)}
-                        </small>
+                        <div>${file.name.length > 20 ? file.name.substring(0, 20) + '...' : file.name}</div>
+                        <div>${this.formatFileSize(file.size)}</div>
                     `;
 
                     container.appendChild(removeBtn);
                     container.appendChild(element);
                     container.appendChild(fileInfo);
                 };
-
                 reader.readAsDataURL(file);
+
                 this.preview.appendChild(container);
             }
 
@@ -223,7 +337,10 @@
                 this.model.removeArchivo(archivoId);
                 const element = this.preview.querySelector(`[data-archivo-id="${archivoId}"]`);
                 if (element) {
-                    element.remove();
+                    element.style.animation = 'fadeOut 0.3s ease';
+                    setTimeout(() => {
+                        element.remove();
+                    }, 300);
                 }
                 this.updateUI();
             }
@@ -236,7 +353,7 @@
 
             updateUI() {
                 const count = this.model.getArchivosCount();
-                this.fileCount.textContent = `${count} archivo(s) seleccionado(s).`;
+                this.fileCount.textContent = `${count} archivo(s) seleccionado(s)`;
                 this.clearAllBtn.style.display = count > 0 ? 'block' : 'none';
             }
 
@@ -249,53 +366,67 @@
             }
 
             // Función principal para enviar el formulario
-            async submitForm() {
-                try {
-                    // Actualizar el contenido del modelo
-                    this.model.updateContenido(this.contenidoInput.value);
+        async submitForm() {
+            const publishBtn = document.getElementById("publishBtn");
 
-                    // Crear FormData para enviar al servidor
-                    const formData = new FormData();
+            // Desactivar el botón y mostrar estado de espera
+            publishBtn.disabled = true;
+            const originalText = publishBtn.innerHTML;
+            publishBtn.innerHTML = '<i class="fas fa-clock"></i> Esperando...';
 
-                    // Agregar contenido y usuario ID
-                    formData.append('Contenido', this.model.contenido);
-                    formData.append('UsuarioId', this.model.usuarioId);
+            try {
+                // Actualizar el contenido del modelo
+                this.model.updateContenido(this.contenidoInput.value);
 
-                    // Agregar todos los archivos
-                    const archivos = this.model.getArchivosArray();
-                    archivos.forEach(file => {
-                        formData.append('Archivos', file);
-                    });
+                // Crear FormData para enviar al servidor
+                const formData = new FormData();
 
-                    // Debug: Mostrar lo que se va a enviar
-                    console.log('Enviando:');
-                    console.log('Contenido:', this.model.contenido);
-                    console.log('UsuarioId:', this.model.usuarioId);
-                    console.log('Archivos count:', archivos.length);
+                // Agregar contenido y usuario ID
+                formData.append('Contenido', this.model.contenido);
+                formData.append('UsuarioId', this.model.usuarioId);
 
-                    // Enviar usando fetch
-                    const response = await fetch(this.form.action, {
-                        method: 'POST',
-                        body: formData
-                    });
+                // Agregar todos los archivos
+                const archivos = this.model.getArchivosArray();
+                archivos.forEach(file => {
+                    formData.append('Archivos', file);
+                });
 
-                    if (response.ok) {
-                        // Redirigir si es exitoso
-                        window.location.href = response.url || '/Home';
-                    } else {
-                        throw new Error('Error en la respuesta del servidor');
-                    }
+                // Enviar usando fetch
+                const response = await fetch(this.form.action, {
+                    method: 'POST',
+                    body: formData
+                });
 
-                } catch (error) {
-                    console.error('Error al enviar formulario:', error);
-                    alert('Hubo un error al publicar. Por favor, inténtalo de nuevo.');
+                if (response.ok) {
+                    // Redirigir si es exitoso
+                    window.location.href = response.url || '/Home';
+                } else {
+                    throw new Error('Error en la respuesta del servidor');
                 }
+
+            } catch (error) {
+                console.error('Error al enviar formulario:', error);
+                alert('Hubo un error al publicar. Por favor, inténtalo de nuevo.');
+
+                // Restaurar el botón en caso de error
+                publishBtn.disabled = false;
+                publishBtn.innerHTML = originalText;
             }
+
+            // Esperar 5 segundos antes de reactivar el botón (solo si no redirigió)
+            setTimeout(() => {
+                if (publishBtn.disabled) {
+                    publishBtn.disabled = false;
+                    publishBtn.innerHTML = originalText;
+                }
+            }, 5000);
         }
+    }
 
         // Inicializar cuando se carga la página
         document.addEventListener('DOMContentLoaded', () => {
             window.publicacionManager = new PublicacionManager();
         });
     </script>
-}
+</body>
+</html>

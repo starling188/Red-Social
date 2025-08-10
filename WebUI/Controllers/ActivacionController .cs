@@ -1,5 +1,5 @@
 ﻿using Aplication.Interface.ValidacionService;
-using Aplication.ValidationAcount;
+
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,12 +12,24 @@ public class ActivacionController : Controller
         _val = userService;
     }
 
+
+
     [HttpGet]
+    public IActionResult activarAccount()
+    {
+        return View();
+    }
+
+
+    //metodo para activar la cuenta del usuario
+    [HttpPost]
     public async Task<IActionResult> ActivarCuenta(string token)
     {
         if (string.IsNullOrEmpty(token))
         {
-            return View("Error"); 
+            ModelState.AddModelError("","debes ingresar un token");
+            return View();
+
         }
 
         try

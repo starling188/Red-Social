@@ -88,9 +88,5 @@ namespace Aplication.Service.publicacion
 
         }
 
-
-
-
-
     }
 }

@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/HomeIndex/InicioWeb.css">
     <link rel="stylesheet" href="~/css/alerts.css">
+
+
+    <link rel="stylesheet" href="~/css/NavBar.css">
+
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="~/css/Search/search-modal.css">
@@ -32,175 +37,162 @@
 <body>
 
     <!-- Contenedor de alertas -->
-    @Html.Partial("_Alerts")
+    @Html.Partial("Alertas/_Alerts")
 
     <!-- Incluir el modal de búsqueda -->
-    @Html.Partial("_SearchModal")
+    @Html.Partial("Buscar/_SearchModal")
 
     <!-- Wrapper para Sidebar y Contenido Principal -->
+  
+
+    @Html.Partial("Nav/_NavSide")
+
+
+
+
+
     <div class="wrapper">
-        <!-- Barra lateral de navegación -->
-        <nav class="sidebar">
-            <ul>
-                <li><a href="#"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
-                <li><a href="#" id="searchButton"><i class="fas fa-search"></i> <span>Buscar</span></a></li>
-                <li><a href="#"><i class="fas fa-compass"></i> <span>Explorar</span></a></li>
-                <li><a href="#"><i class="fas fa-paper-plane"></i> <span>Mensajes</span></a></li>
-                <li><a href="#"><i class="fas fa-heart"></i> <span>Notificaciones</span></a></li>
-                <li>
-                    <a asp-action="CrearPublicacion" asp-controller="Home">
-                        <i class="fas fa-plus-square"></i> <span>Crear</span>
-                    </a>
-                </li>
-                <li>
-                    <a asp-action="Profile" asp-controller="Home">
-                        <i class="fas fa-user-circle"></i> <span>Perfil</span>
-                    </a>
-                </li>
-                <li><a href="#"><i class="fas fa-cog"></i> <span>Configuración</span></a></li>
-                <li><a href="@Url.Action("Salir","Home")"><i class="fas fa-sign-out-alt"></i> <span>Cerrar sesión</span></a></li>
-            </ul>
-        </nav>
+                <!-- Contenido Principal -->
+                <div class="main-content">
+                    <!-- Barra superior con foto de perfil -->
+                    <div class="top-bar">
+                        <div class="profile-info">
+                            @if (!string.IsNullOrEmpty(ViewBag.PhotoPerfil))
+                            {
+                                <img src="@ViewBag.PhotoPerfil" alt="User" class="profile-picture">
+                            }
+                            else
+                            {
+                                <img src="https://via.placeholder.com/40" alt="User" class="profile-picture">
+                            }
 
-        <!-- Contenido Principal -->
-        <div class="main-content">
-            <!-- Barra superior con foto de perfil -->
-            <div class="top-bar">
-                <div class="profile-info">
-                    @if (!string.IsNullOrEmpty(ViewBag.PhotoPerfil))
-                    {
-                        <img src="@ViewBag.PhotoPerfil" alt="User" class="profile-picture">
-                    }
-                    else
-                    {
-                        <img src="https://via.placeholder.com/40" alt="User" class="profile-picture">
-                    }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <span class="username">@User.Identity.Name</span>
+                            }
+                            else
+                            {
+                                <span class="username">Invitado</span>
+                            }
+                        </div>
+                    </div>
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <span class="username">@User.Identity.Name</span>
-                    }
-                    else
-                    {
-                        <span class="username">Invitado</span>
-                    }
+                    <!-- Diseño del contenido -->
+                    <div class="content-layout">
+                        <!-- Sección de publicaciones -->
+                        <div class="posts-section">
+                            <h2>Feed</h2>
+
+                            <!-- Publicación individual -->
+                            <div class="post">
+                                <div class="post-header">
+                                    <img src="https://via.placeholder.com/40" alt="User" class="post-user-picture">
+                                    <div>
+                                        <span class="post-username">user_1</span>
+                                        <span class="post-time">2 horas atrás</span>
+                                    </div>
+                                </div>
+                                <div class="post-content">
+                                    <p>Este es el contenido de la publicación. Aquí puedes escribir cualquier cosa o subir fotos.</p>
+                                    <img src="https://via.placeholder.com/600x400" alt="Post Image" class="post-image">
+                                </div>
+                                <div class="post-actions">
+                                    <a href="#"><i class="fas fa-heart"></i> Me gusta</a>
+                                    <a href="#"><i class="fas fa-comment"></i> Comentar</a>
+                                    <a href="#"><i class="fas fa-share"></i> Compartir</a>
+                                </div>
+                            </div>
+
+                            <!-- Segunda publicación -->
+                            <div class="post">
+                                <div class="post-header">
+                                    <img src="https://via.placeholder.com/40" alt="User" class="post-user-picture">
+                                    <div>
+                                        <span class="post-username">user_2</span>
+                                        <span class="post-time">5 horas atrás</span>
+                                    </div>
+                                </div>
+                                <div class="post-content">
+                                    <p>¡Hola a todos! Compartiendo un momento especial.</p>
+                                    <img src="https://via.placeholder.com/600x400" alt="Post Image" class="post-image">
+                                </div>
+                                <div class="post-actions">
+                                    <a href="#"><i class="fas fa-heart"></i> Me gusta</a>
+                                    <a href="#"><i class="fas fa-comment"></i> Comentar</a>
+                                    <a href="#"><i class="fas fa-share"></i> Compartir</a>
+                                </div>
+                            </div>
+
+                            <!-- Tercera publicación -->
+                            <div class="post">
+                                <div class="post-header">
+                                    <img src="https://via.placeholder.com/40" alt="User" class="post-user-picture">
+                                    <div>
+                                        <span class="post-username">user_3</span>
+                                        <span class="post-time">1 día atrás</span>
+                                    </div>
+                                </div>
+                                <div class="post-content">
+                                    <p>Nuevo proyecto en marcha. ¡Estén atentos para más actualizaciones!</p>
+                                </div>
+                                <div class="post-actions">
+                                    <a href="#"><i class="fas fa-heart"></i> Me gusta</a>
+                                    <a href="#"><i class="fas fa-comment"></i> Comentar</a>
+                                    <a href="#"><i class="fas fa-share"></i> Compartir</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sección de amigos sugeridos -->
+                        <div class="friends-section">
+                            <h3>Sugerencias para ti</h3>
+                            <ul>
+                                <li>
+                                    <img src="https://via.placeholder.com/40" alt="User 1">
+                                    <div class="suggested-user">
+                                        <span>Pedro</span><br>
+                                        <span>1 seguidor</span>
+                                    </div>
+                                    <a href="#" class="follow-btn">Seguir</a>
+                                </li>
+                                <li>
+                                    <img src="https://via.placeholder.com/40" alt="User 2">
+                                    <div class="suggested-user">
+                                        <span>Juan</span><br>
+                                        <span>3 seguidores</span>
+                                    </div>
+                                    <a href="#" class="follow-btn">Seguir</a>
+                                </li>
+                                <li>
+                                    <img src="https://via.placeholder.com/40" alt="User 3">
+                                    <div class="suggested-user">
+                                        <span>María</span><br>
+                                        <span>5 seguidores</span>
+                                    </div>
+                                    <a href="#" class="follow-btn">Seguir</a>
+                                </li>
+                                <li>
+                                    <img src="https://via.placeholder.com/40" alt="User 4">
+                                    <div class="suggested-user">
+                                        <span>Carlos</span><br>
+                                        <span>2 seguidores</span>
+                                    </div>
+                                    <a href="#" class="follow-btn">Seguir</a>
+                                </li>
+                                <li>
+                                    <img src="https://via.placeholder.com/40" alt="User 5">
+                                    <div class="suggested-user">
+                                        <span>Ana</span><br>
+                                        <span>7 seguidores</span>
+                                    </div>
+                                    <a href="#" class="follow-btn">Seguir</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Diseño del contenido -->
-            <div class="content-layout">
-                <!-- Sección de publicaciones -->
-                <div class="posts-section">
-                    <h2>Feed</h2>
-
-                    <!-- Publicación individual -->
-                    <div class="post">
-                        <div class="post-header">
-                            <img src="https://via.placeholder.com/40" alt="User" class="post-user-picture">
-                            <div>
-                                <span class="post-username">user_1</span>
-                                <span class="post-time">2 horas atrás</span>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <p>Este es el contenido de la publicación. Aquí puedes escribir cualquier cosa o subir fotos.</p>
-                            <img src="https://via.placeholder.com/600x400" alt="Post Image" class="post-image">
-                        </div>
-                        <div class="post-actions">
-                            <a href="#"><i class="fas fa-heart"></i> Me gusta</a>
-                            <a href="#"><i class="fas fa-comment"></i> Comentar</a>
-                            <a href="#"><i class="fas fa-share"></i> Compartir</a>
-                        </div>
-                    </div>
-
-                    <!-- Segunda publicación -->
-                    <div class="post">
-                        <div class="post-header">
-                            <img src="https://via.placeholder.com/40" alt="User" class="post-user-picture">
-                            <div>
-                                <span class="post-username">user_2</span>
-                                <span class="post-time">5 horas atrás</span>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <p>¡Hola a todos! Compartiendo un momento especial.</p>
-                            <img src="https://via.placeholder.com/600x400" alt="Post Image" class="post-image">
-                        </div>
-                        <div class="post-actions">
-                            <a href="#"><i class="fas fa-heart"></i> Me gusta</a>
-                            <a href="#"><i class="fas fa-comment"></i> Comentar</a>
-                            <a href="#"><i class="fas fa-share"></i> Compartir</a>
-                        </div>
-                    </div>
-
-                    <!-- Tercera publicación -->
-                    <div class="post">
-                        <div class="post-header">
-                            <img src="https://via.placeholder.com/40" alt="User" class="post-user-picture">
-                            <div>
-                                <span class="post-username">user_3</span>
-                                <span class="post-time">1 día atrás</span>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <p>Nuevo proyecto en marcha. ¡Estén atentos para más actualizaciones!</p>
-                        </div>
-                        <div class="post-actions">
-                            <a href="#"><i class="fas fa-heart"></i> Me gusta</a>
-                            <a href="#"><i class="fas fa-comment"></i> Comentar</a>
-                            <a href="#"><i class="fas fa-share"></i> Compartir</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sección de amigos sugeridos -->
-                <div class="friends-section">
-                    <h3>Sugerencias para ti</h3>
-                    <ul>
-                        <li>
-                            <img src="https://via.placeholder.com/40" alt="User 1">
-                            <div class="suggested-user">
-                                <span>Pedro</span><br>
-                                <span>1 seguidor</span>
-                            </div>
-                            <a href="#" class="follow-btn">Seguir</a>
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/40" alt="User 2">
-                            <div class="suggested-user">
-                                <span>Juan</span><br>
-                                <span>3 seguidores</span>
-                            </div>
-                            <a href="#" class="follow-btn">Seguir</a>
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/40" alt="User 3">
-                            <div class="suggested-user">
-                                <span>María</span><br>
-                                <span>5 seguidores</span>
-                            </div>
-                            <a href="#" class="follow-btn">Seguir</a>
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/40" alt="User 4">
-                            <div class="suggested-user">
-                                <span>Carlos</span><br>
-                                <span>2 seguidores</span>
-                            </div>
-                            <a href="#" class="follow-btn">Seguir</a>
-                        </li>
-                        <li>
-                            <img src="https://via.placeholder.com/40" alt="User 5">
-                            <div class="suggested-user">
-                                <span>Ana</span><br>
-                                <span>7 seguidores</span>
-                            </div>
-                            <a href="#" class="follow-btn">Seguir</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Script para las alertas -->
@@ -224,5 +216,8 @@
     </script>
     <!-- Script del modal de búsqueda -->
     <script src="~/js/search-modal.js"></script>
+    <script src="~/js/SideBar.js"></script>
+
+
 </body>
 </html>
