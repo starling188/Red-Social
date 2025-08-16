@@ -1,60 +1,95 @@
-Red Social – Backend
-Este es el backend oficial del mini proyecto de Red Social, una plataforma que permite a los usuarios crear y compartir publicaciones, interactuar con amigos y gestionar su perfil.
+# 🌐 Social Network — Backend
 
-🚀 Tecnologías y Dependencias Principales
+Este es el backend oficial del proyecto **Social Network**, una red social desarrollada en **ASP.NET Core MVC (6/7/8)** con arquitectura **Onion**.  
+La aplicación permite a los usuarios registrarse, autenticarse, crear publicaciones, interactuar con amigos y administrar su perfil, manteniendo altos estándares de seguridad y buenas prácticas de desarrollo.
 
-ASP.NET Core MVC: Framework principal para la creación de la aplicación web.
+---
 
-C#: Lenguaje de programación.
+## 🚀 Tecnologías y dependencias principales
 
-Entity Framework Core: ORM para la persistencia de datos con un enfoque de Code First.
+- [ASP.NET Core MVC](https://learn.microsoft.com/aspnet/core) — Framework principal para el desarrollo de la aplicación web.
+- [Entity Framework Core](https://learn.microsoft.com/ef/core) — ORM con enfoque **Code First** para la persistencia de datos.
+- [SQL Server](https://www.microsoft.com/sql-server) — Base de datos relacional.
+- [AutoMapper](https://automapper.org/) — Mapeo automático entre entidades y ViewModels/DTOs.
+- [Bootstrap](https://getbootstrap.com/) — Framework CSS para diseño responsivo y visualmente entendible.
+- [MailKit](https://github.com/jstedfast/MailKit) — Servicio de correo electrónico (activación de cuenta, recuperación de contraseña).
+- [Repositorio y servicio genéricos] — Patrón para desacoplar la lógica de acceso a datos y negocio.
+- [Onion Architecture] — Patrón de arquitectura aplicada al 100% para separación de responsabilidades.
 
-Automapper: Librería para el mapeo de objetos entre capas.
+---
 
-Bootstrap: Framework de CSS para un diseño visualmente atractivo y responsivo.
+## 📁 Estructura del proyecto
 
-JavaScript & CSS: Para la lógica y estilos del frontend.
+- `Application/` — Servicios de aplicación, DTOs, validaciones, reglas de negocio.
+- `Domain/` — Entidades principales y contratos.
+- `Infrastructure/` — Persistencia con EF Core, repositorios, servicio de correo.
+- `WebUI/` — Controladores MVC, vistas (Razor), filtros y middlewares.
+- `Shared/` — Servicios transversales como correo electrónico.
+- `Program.cs` — Punto de entrada principal, configuración de servicios y middleware.
 
-📁 Estructura del Proyecto
+---
 
-El proyecto sigue la Arquitectura Onion para garantizar una separación de responsabilidades clara y un acoplamiento bajo.
+## 🔐 Autenticación y Seguridad
 
-Core/: Contiene la lógica de negocio y las entidades del dominio.
+- Sistema de autenticación con **cookies**.  
+- Registro y login con validaciones de usuario único y estado de activación.  
+- Contraseñas seguras almacenadas con **hashing** (`bcrypt`/ASP.NET Identity).  
+- Seguridad adicional:
+  - Usuarios inactivos deben activar su cuenta vía **correo electrónico con token de 5 minutos**.
+  - Se restringe acceso a rutas privadas (Publicaciones, Amigos, Mi Perfil) si no se está logueado.
 
-Infrastructure/: Implementación de los repositorios y servicios de datos (Entity Framework).
+### Endpoints y funcionalidades clave
 
-Application/: Lógica de la aplicación que interactúa con las capas inferiores.
+#### 👤 Autenticación
+- `GET /login` — Vista de inicio de sesión.
+- `POST /login` — Validación de credenciales.
+- `GET /register` — Vista de registro de usuario.
+- `POST /register` — Registro de nuevos usuarios (inactivos hasta activación vía correo).
+- `POST /forgot-password` — Restablecer contraseña con envío de nueva clave al correo.
+- `GET /activate?token=xxxx` — Activación de cuenta vía token de correo.
 
-Presentation/: La capa de interfaz de usuario (MVC Views, Controllers, ViewModels).
+#### 🏠 Publicaciones (Home)
+- Crear, listar, editar y eliminar publicaciones propias.
+- Agregar **comentarios** y **replies** a publicaciones.
+- Soporte para imágenes y videos de YouTube.
 
-Shared/: Contiene servicios comunes como el servicio de correo electrónico.
+#### 👥 Amigos
+- Ver publicaciones de amigos.
+- Agregar/eliminar amigos.
+- Listado de amigos con foto, nombre, apellido y usuario.
 
-🔐 Autenticación y Seguridad
+#### 📝 Mi Perfil
+- Editar datos del usuario logueado (nombre, apellido, teléfono, correo, contraseña, foto).
+- Validaciones en formularios (contraseña opcional, formato de teléfono RD, etc.).
 
-La autenticación se basa en sesiones gestionadas por ASP.NET Core MVC. Se garantiza que las páginas de Publicaciones, Mi Perfil y Amigos solo sean accesibles para usuarios logueados.
+---
 
-Endpoints de Autenticación
+## ⚙️ Configuración del entorno
 
-/Login: Muestra el formulario de inicio de sesión y procesa la autenticación.
+Crea un archivo `.env` o configura `appsettings.json` con las siguientes variables:
 
-/Registro: Muestra el formulario de registro y crea nuevos usuarios inactivos.
-
-/MiPerfil: Permite a los usuarios actualizar su información de perfil.
-
-⚙️ Configuración del Entorno
-
-El proyecto se configura a través de los archivos de appsettings.json de ASP.NET Core, donde se define la cadena de conexión a la base de datos y otras configuraciones.
-
-Variables Clave en appsettings.json
-
+```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=SocialNetworkDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "DefaultConnection": "Server=localhost;Database=SocialNetwork;Trusted_Connection=True;MultipleActiveResultSets=true"
   },
-  "SmtpSettings": {
-    "Server": "smtp.ejemplo.com",
+  "EmailSettings": {
+    "SmtpServer": "smtp.gmail.com",
     "Port": 587,
-    "Username": "tu_correo@ejemplo.com",
-    "Password": "tu_password"
+    "SenderName": "SocialNetwork",
+    "SenderEmail": "tu_correo@gmail.com",
+    "Password": "clave_de_aplicacion"
   }
 }
+```
+
+---
+
+## ✅ Consideraciones generales
+
+- Uso obligatorio de **ViewModels** con validaciones.
+- Arquitectura **Onion** implementada correctamente.
+- Uso de **repositorio y servicio genéricos**.
+- Uso de **AutoMapper** para conversión entre entidades y DTOs.
+- Diseño visual con **Bootstrap** para vistas limpias y entendibles.
+- Seguridad: acceso restringido a secciones privadas si no se está autenticado.
