@@ -14,7 +14,7 @@ La aplicación permite a los usuarios registrarse, autenticarse, crear publicaci
 - [Bootstrap](https://getbootstrap.com/) — Framework CSS para diseño responsivo y visualmente entendible.
 - [MailKit](https://github.com/jstedfast/MailKit) — Servicio de correo electrónico (activación de cuenta, recuperación de contraseña).
 - [Repositorio y servicio genéricos] — Patrón para desacoplar la lógica de acceso a datos y negocio.
-- [Onion Architecture] — Patrón de arquitectura aplicada al 100% para separación de responsabilidades.
+- [Clean Architecture] — Patrón de arquitectura aplicada al 100% para separación de responsabilidades.
 
 ---
 
