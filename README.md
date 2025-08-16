@@ -88,7 +88,7 @@ Crea un archivo `.env` o configura `appsettings.json` con las siguientes variabl
 ## ✅ Consideraciones generales
 
 - Uso obligatorio de **ViewModels** con validaciones.
-- Arquitectura **Onion** implementada correctamente.
+- Arquitectura **Clean** implementada correctamente.
 - Uso de **repositorio y servicio genéricos**.
 - Uso de **AutoMapper** para conversión entre entidades y DTOs.
 - Diseño visual con **Bootstrap** para vistas limpias y entendibles.
