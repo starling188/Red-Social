@@ -1,6 +1,6 @@
 # 🌐 Social Network — Backend
 
-Este es el backend oficial del proyecto **Social Network**, una red social desarrollada en **ASP.NET Core MVC (6/7/8)** con arquitectura **Onion**.  
+Este es el backend oficial del proyecto **Social Network**, una red social desarrollada en **ASP.NET Core MVC (6/7/8)** con arquitectura **Clean**.  
 La aplicación permite a los usuarios registrarse, autenticarse, crear publicaciones, interactuar con amigos y administrar su perfil, manteniendo altos estándares de seguridad y buenas prácticas de desarrollo.
 
 ---
